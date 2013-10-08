@@ -1,0 +1,5 @@
+name: SimpliciteAddons
+author: roblikescake
+main: net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons
+description: It does stuff.
+version: ${project.version}-b${BUILD_NUMBER}

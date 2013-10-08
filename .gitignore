@@ -1,0 +1,44 @@
+# Eclipse stuff
+/.classpath
+/.project
+/.settings
+
+# netbeans
+/nbproject
+
+# we use maven!
+/build.xml
+
+# maven
+/target
+/repo
+
+# vim
+.*.sw[a-p]
+
+# various other potential build files
+/build
+/bin
+/dist
+/manifest.mf
+
+/world
+
+# Mac filesystem dust
+*.DS_Store
+
+# intellij
+*.iml
+*.ipr
+*.iws
+.idea/
+/out/
+
+# Project Stuff
+/src/main/resources/IdealChat
+
+# Other Libraries
+*.jar
+
+# Atlassian Stuff
+/atlassian-ide-plugin.xml
