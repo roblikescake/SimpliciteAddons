@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -130,5 +131,16 @@ public class PlayerListener implements Listener {
         itemMeta.setDisplayName(ChatColor.AQUA + "AnimalCatcher");
         itemStack.setItemMeta(itemMeta);
         return itemStack;
+    }
+
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onEntityDamage(EntityDamageByEntityEvent e) {
+        LivingEntity damagee = (LivingEntity)e.getEntity();
+        if(e.getDamager() instanceof Player || e.getEntity() instanceof Player) {
+            Location eyeLoc = damagee.getEyeLocation();
+            Location loc = damagee.getLocation();
+            eyeLoc.getWorld().playEffect(eyeLoc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
+            loc.getWorld().playEffect(loc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
+        }
     }
 }
