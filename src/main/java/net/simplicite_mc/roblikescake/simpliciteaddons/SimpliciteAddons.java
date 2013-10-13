@@ -13,19 +13,12 @@ public class SimpliciteAddons extends JavaPlugin{
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
 
-        final BloodEffectListener bloodEffectListener = new BloodEffectListener(this);
-        pm.registerEvents(bloodEffectListener, this);
+        pm.registerEvents(new BloodEffectListener(this), this);
+        pm.registerEvents(new HeadsListener(this), this);
+        pm.registerEvents(new MobCatcherListener(this), this);
+        pm.registerEvents(new PlayerListener(this), this);
 
-        final HeadsListener headsListener = new HeadsListener(this);
-        pm.registerEvents(headsListener, this);
-
-        final MobCatcherListener mobCatcherListener = new MobCatcherListener(this);
-        pm.registerEvents(mobCatcherListener, this);
-
-        final PlayerListener playerListener = new PlayerListener(this);
-        pm.registerEvents(playerListener, this);
-
-        this.getServer().addRecipe(mobCatcherListener.getAnimalCatcherRecipe());
+        this.getServer().addRecipe(MobCatcherListener.getAnimalCatcherRecipe());
     }
 
     @Override

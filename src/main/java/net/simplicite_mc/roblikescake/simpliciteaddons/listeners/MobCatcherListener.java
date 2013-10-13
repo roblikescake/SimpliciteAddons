@@ -56,15 +56,21 @@ public class MobCatcherListener implements Listener {
         }
 
         EntityType entityType = e.getEntityType();
-        Entity ent = e.getEntity();
-        Ageable ageableEntity = (Ageable) ent;
 
+        if(isAgeable(entityType)) {
+            Entity ent = e.getEntity();
+            Ageable ageableEnt = (Ageable) ent;
+            ageableEnt.setBaby();
+        }
+    }
+
+    public static boolean isAgeable(EntityType entityType) {
         if (entityType == EntityType.PIG || entityType == EntityType.SHEEP || entityType == EntityType.COW || entityType == EntityType.CHICKEN ||
                 entityType == EntityType.WOLF || entityType == EntityType.MUSHROOM_COW || entityType == EntityType.OCELOT ||
                 entityType == EntityType.HORSE || entityType == EntityType.VILLAGER) {
-            ageableEntity.setBaby();
+            return true;
         } else {
-            return;
+            return false;
         }
     }
 
@@ -95,7 +101,7 @@ public class MobCatcherListener implements Listener {
         }
     }
 
-    public ShapedRecipe getAnimalCatcherRecipe() {
+    public static ShapedRecipe getAnimalCatcherRecipe() {
         ShapedRecipe AnimalCatcher = new ShapedRecipe(getAnimalCatcher());
         AnimalCatcher.shape(" X ", "XXX", " X ");
         AnimalCatcher.setIngredient('X', Material.EGG);
@@ -103,7 +109,7 @@ public class MobCatcherListener implements Listener {
         return AnimalCatcher;
     }
 
-    public ItemStack getAnimalCatcher() {
+    public static ItemStack getAnimalCatcher() {
         ItemStack itemStack = new ItemStack(Material.EGG);
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(ChatColor.AQUA + "AnimalCatcher");
