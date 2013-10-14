@@ -20,14 +20,15 @@ public class BloodEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent e) {
-        LivingEntity damagee = (LivingEntity)e.getEntity();
+        LivingEntity entityDamaged = (LivingEntity) e.getEntity();
+        LivingEntity entityDamagedBy = (LivingEntity) e.getDamager();
 
-        if (e.getEntity() instanceof LivingEntity) {
-            if(e.getDamager() instanceof Player || e.getEntity() instanceof Player) {
-                Location eyeLoc = damagee.getEyeLocation();
-                Location loc = damagee.getLocation();
+        if(e.getEntity() instanceof LivingEntity && e.getDamager() instanceof LivingEntity) {
+            if(entityDamaged instanceof Player || entityDamagedBy instanceof Player) {
+                Location eyeLoc = entityDamaged.getEyeLocation();
+                Location baseLoc = entityDamaged.getLocation();
                 eyeLoc.getWorld().playEffect(eyeLoc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
-                loc.getWorld().playEffect(loc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
+                baseLoc.getWorld().playEffect(baseLoc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
             }
         } else {
             return;
