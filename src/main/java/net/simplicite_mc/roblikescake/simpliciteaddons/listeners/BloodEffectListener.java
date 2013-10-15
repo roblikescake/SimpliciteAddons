@@ -20,10 +20,10 @@ public class BloodEffectListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent e) {
-        LivingEntity entityDamaged = (LivingEntity) e.getEntity();
-        LivingEntity entityDamagedBy = (LivingEntity) e.getDamager();
-
         if(e.getEntity() instanceof LivingEntity && e.getDamager() instanceof LivingEntity) {
+            LivingEntity entityDamaged = (LivingEntity) e.getEntity();
+            LivingEntity entityDamagedBy = (LivingEntity) e.getDamager();
+
             if(entityDamaged instanceof Player || entityDamagedBy instanceof Player) {
                 Location eyeLoc = entityDamaged.getEyeLocation();
                 Location baseLoc = entityDamaged.getLocation();
