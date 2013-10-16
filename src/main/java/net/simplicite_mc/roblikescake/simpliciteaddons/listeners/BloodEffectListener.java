@@ -4,6 +4,7 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,10 +26,11 @@ public class BloodEffectListener implements Listener {
             LivingEntity entityDamagedBy = (LivingEntity) e.getDamager();
 
             if(entityDamaged instanceof Player || entityDamagedBy instanceof Player) {
+                Location baseloc = entityDamaged.getLocation();
                 Location eyeLoc = entityDamaged.getEyeLocation();
-                Location baseLoc = entityDamaged.getLocation();
-                eyeLoc.getWorld().playEffect(eyeLoc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
-                baseLoc.getWorld().playEffect(baseLoc, Effect.STEP_SOUND, Material.REDSTONE_WIRE);
+
+                baseloc.getWorld().playEffect(baseloc, Effect.STEP_SOUND, Material.NETHER_WARTS);
+                eyeLoc.getWorld().playEffect(eyeLoc, Effect.STEP_SOUND, Material.NETHER_WARTS);
             }
         } else {
             return;
