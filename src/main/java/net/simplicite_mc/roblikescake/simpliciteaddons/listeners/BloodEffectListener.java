@@ -4,7 +4,6 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,7 +16,6 @@ public class BloodEffectListener implements Listener {
     public BloodEffectListener(SimpliciteAddons i) {
         pl = i;
     }
-
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent e) {
