@@ -5,6 +5,8 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadData;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Player;
@@ -59,17 +61,23 @@ public class HeadsListener implements Listener {
 
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onEntityDeath(EntityDeathEvent e) {
-        if (e.getEntity().getKiller() instanceof Player) {
-            EntityType entityType = e.getEntityType();
-            Location entLoc = e.getEntity().getLocation();
+    public void onEntityDeath(EntityDeathEvent event) {
+        if (event.getEntity().getKiller() != null) {
+            EntityType entityType = event.getEntityType();
+            Entity entity = event.getEntity();
+            Location entLoc = event.getEntity().getLocation();
             Random random = new Random();
             int diceRoll = random.nextInt(100);
-            Player killer = e.getEntity().getKiller();
+            Player killer = event.getEntity().getKiller();
             String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
+            int lootBonus = 0;
 
-            if (e.getEntity() instanceof Monster) {
-                if (diceRoll <= headData.get(entityType).getDropChance()) {
+            if (killer.getItemInHand() != null) {
+                lootBonus = killer.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2;
+            }
+
+            if (entity instanceof Monster) {
+                if (diceRoll <= (headData.get(entityType).getDropChance() + lootBonus)) {
                     ItemStack mobHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
                     SkullMeta skullMeta = (SkullMeta) mobHead.getItemMeta();
                     skullMeta.setOwner(headData.get(entityType).getOwner());
@@ -79,9 +87,9 @@ public class HeadsListener implements Listener {
                     entLoc.getWorld().dropItemNaturally(entLoc, mobHead);
                     killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + headData.get(entityType).getDisplayName() + ChatColor.GREEN + " dropped!");
                 }
-            } else if (e.getEntity() instanceof Player) {
-                if (diceRoll <= 10) {
-                    String playerName = ((Player) e.getEntity()).getName();
+            } else if (entity instanceof Player) {
+                if (diceRoll <= (10 + lootBonus)) {
+                    String playerName = ((Player) entity).getName();
                     ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
                     SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();
                     skullMeta.setOwner(playerName);
@@ -97,9 +105,9 @@ public class HeadsListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onSkullPickup(PlayerPickupItemEvent e) {
-        if (e.getItem().getItemStack().getType().equals(Material.SKULL_ITEM)) {
-            ItemStack skull = e.getItem().getItemStack();
+    public void onSkullPickup(PlayerPickupItemEvent event) {
+        if (event.getItem().getItemStack().getType().equals(Material.SKULL_ITEM)) {
+            ItemStack skull = event.getItem().getItemStack();
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
             for (HeadData h : headData.values()) {
                 if (h.getOwner().equals(skullMeta.getOwner())) {
