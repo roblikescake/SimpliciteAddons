@@ -17,8 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class MobCatcherListener implements Listener {
     public SimpliciteAddons pl;
-    public MobCatcherListener(SimpliciteAddons i) {
-        pl = i;
+    public MobCatcherListener(SimpliciteAddons pl) {
+        this.pl = pl;
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

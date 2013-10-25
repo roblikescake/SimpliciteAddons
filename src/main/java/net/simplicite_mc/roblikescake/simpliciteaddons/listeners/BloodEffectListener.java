@@ -13,8 +13,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 public class BloodEffectListener implements Listener {
     public SimpliciteAddons pl;
-    public BloodEffectListener(SimpliciteAddons i) {
-        pl = i;
+    public BloodEffectListener(SimpliciteAddons pl) {
+        this.pl = pl;
     }
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)

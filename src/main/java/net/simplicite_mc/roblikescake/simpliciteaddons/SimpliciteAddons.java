@@ -1,9 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.BloodEffectListener;
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.HeadsListener;
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.MobCatcherListener;
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
+import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.*;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +14,7 @@ public class SimpliciteAddons extends JavaPlugin{
         pm.registerEvents(new HeadsListener(this), this);
         pm.registerEvents(new MobCatcherListener(this), this);
         pm.registerEvents(new PlayerListener(this), this);
+        pm.registerEvents(new XPBankListener(this), this);
 
         this.getServer().addRecipe(MobCatcherListener.getAnimalCatcherRecipe());
     }

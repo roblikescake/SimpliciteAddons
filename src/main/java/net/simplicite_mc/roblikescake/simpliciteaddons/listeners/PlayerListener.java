@@ -12,8 +12,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerListener implements Listener {
     public SimpliciteAddons pl;
-    public PlayerListener(SimpliciteAddons i) {
-        pl = i;
+    public PlayerListener(SimpliciteAddons pl) {
+        this.pl = pl;
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
