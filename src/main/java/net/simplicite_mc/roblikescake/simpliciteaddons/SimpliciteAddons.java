@@ -10,13 +10,9 @@ public class SimpliciteAddons extends JavaPlugin{
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
 
-        pm.registerEvents(new BloodEffectListener(this), this);
-        pm.registerEvents(new HeadsListener(this), this);
-        pm.registerEvents(new MobCatcherListener(this), this);
         pm.registerEvents(new PlayerListener(this), this);
+        pm.registerEvents(new EntityListener(this), this);
         pm.registerEvents(new XPBankListener(this), this);
-
-        this.getServer().addRecipe(MobCatcherListener.getAnimalCatcherRecipe());
     }
 
     @Override
