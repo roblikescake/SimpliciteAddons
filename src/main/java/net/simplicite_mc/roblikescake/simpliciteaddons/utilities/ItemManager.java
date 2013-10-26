@@ -76,6 +76,7 @@ public class ItemManager {
         return animalSpawnEgg;
     }
 
+    // Create MobHead
     public static ItemStack getMobHead(EntityType entityType) {
         ItemStack mobHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) mobHead.getItemMeta();
@@ -85,6 +86,7 @@ public class ItemManager {
         return mobHead;
     }
 
+    // Create PlayerHead
     public static ItemStack getPlayerHead(String playerName) {
         ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();

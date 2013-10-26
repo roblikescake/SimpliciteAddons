@@ -101,6 +101,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    // Re-Apply Head Data on Pickup
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onHeadPickup(PlayerPickupItemEvent event) {
         if (event.getItem().getItemStack().getType().equals(Material.SKULL_ITEM)) {

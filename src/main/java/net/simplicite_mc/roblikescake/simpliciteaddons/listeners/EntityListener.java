@@ -40,6 +40,7 @@ public class EntityListener implements Listener {
         }
     }
 
+    // Give a Mob/Player Head When Killed
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
         if (event.getEntity().getKiller() != null) {
