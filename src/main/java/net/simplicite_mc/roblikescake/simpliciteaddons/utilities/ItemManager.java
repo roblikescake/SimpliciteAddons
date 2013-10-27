@@ -1,6 +1,8 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
+import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;

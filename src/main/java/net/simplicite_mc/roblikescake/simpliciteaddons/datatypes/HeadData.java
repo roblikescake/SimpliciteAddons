@@ -1,4 +1,4 @@
-package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
+package net.simplicite_mc.roblikescake.simpliciteaddons.datatypes;
 
 public class HeadData {
     private int dropChance;
