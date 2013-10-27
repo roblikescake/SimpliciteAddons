@@ -45,7 +45,14 @@ public class EntityListener implements Listener {
         }
     }
 
-    /** Give a Mob/Player Head When Killed */
+    /**
+     * Check EntityDeathEvents.
+     * <p>
+     * These events are checked for the purpose of dropping
+     * mob or player heads after they are killed.
+     *
+     * @param event The event to check
+     */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
         if (event.getEntity().getKiller() != null) {
