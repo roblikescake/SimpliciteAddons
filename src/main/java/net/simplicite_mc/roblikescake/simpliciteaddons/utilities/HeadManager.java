@@ -40,9 +40,9 @@ public class HeadManager {
                 SimpliciteAddons.p.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
             }
         } else {
-            if (diceRoll <= (ItemManager.headData.get(entityType).getDropChance() + lootBonus)) {
+            if (diceRoll <= (headData.getDropChance() + lootBonus)) {
                 entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
-                killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + ItemManager.headData.get(entityType).getDisplayName() + ChatColor.GREEN + " dropped!");
+                killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + headData.getDisplayName() + ChatColor.GREEN + " dropped!");
             }
         }
     }
