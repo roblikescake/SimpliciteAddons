@@ -18,7 +18,7 @@ public class ItemManager {
 
     public ItemManager(SimpliciteAddons pl) {
         this.pl = pl;
-        pl.getServer().addRecipe(ItemManager.getAnimalCatcherRecipe());
+        pl.getServer().addRecipe(getAnimalCatcherRecipe());
         headData = new HashMap<EntityType, HeadData>();
         headData.put(EntityType.CHICKEN, new HeadData(2, "MHF_Chicken", "Chicken Head"));
         headData.put(EntityType.COW, new HeadData(2, "MHF_Cow", "Cow Head"));
@@ -50,8 +50,7 @@ public class ItemManager {
         headData.put(EntityType.WITHER, new HeadData(10, "WitherGamer", "Wither Head"));
     }
 
-
-    // Create AnimalCatcher Recipe
+    /** Create AnimalCatcher Recipe */
     public static ShapedRecipe getAnimalCatcherRecipe() {
         ShapedRecipe AnimalCatcher = new ShapedRecipe(getAnimalCatcher());
         AnimalCatcher.shape(" X ", "XXX", " X ");
@@ -60,7 +59,7 @@ public class ItemManager {
         return AnimalCatcher;
     }
 
-    // Create AnimalCatcher Item
+    /** Create AnimalCatcher Item */
     public static ItemStack getAnimalCatcher() {
         ItemStack itemStack = new ItemStack(Material.EGG);
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -69,14 +68,14 @@ public class ItemManager {
         return itemStack;
     }
 
-    // Create Animal SpawnEgg for MobCatcher
+    /** Create Animal SpawnEgg for MobCatcher */
     public static ItemStack getAnimalSpawnEgg(EntityType entityType) {
         ItemStack animalSpawnEgg = new ItemStack(Material.MONSTER_EGG);
         animalSpawnEgg.setData(new SpawnEgg(entityType));
         return animalSpawnEgg;
     }
 
-    // Create MobHead
+    /** Create MobHead */
     public static ItemStack getMobHead(EntityType entityType) {
         ItemStack mobHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) mobHead.getItemMeta();
@@ -86,7 +85,7 @@ public class ItemManager {
         return mobHead;
     }
 
-    // Create PlayerHead
+    /** Create PlayerHead */
     public static ItemStack getPlayerHead(String playerName) {
         ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
         SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();

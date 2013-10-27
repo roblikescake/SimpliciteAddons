@@ -26,34 +26,35 @@ public class PlayerListener implements Listener {
         this.pl = pl;
     }
 
-    // Join Message
+    /** Join Message */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         e.setJoinMessage(ChatColor.BLACK + "[" + ChatColor.GREEN + "+" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.GREEN + " Online" + ChatColor.GRAY + "!");
     }
 
-    // Quit Message
+    /** Quit Message */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         e.setQuitMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!");
     }
-    // Kick Message
+    /** Kick Message */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerKick(PlayerKickEvent e) {
         Player p = e.getPlayer();
         e.setLeaveMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!");
     }
 
-    // When a player uses the Animal Catcher
+    /** When a player uses the Animal Catcher */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onPlayerUseAnimalCatcher(PlayerInteractEntityEvent event) {
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Egg" + ChatColor.BLACK + "]";
         Player player = event.getPlayer();
         ItemStack itemStack = player.getItemInHand();
-
+        event.getPlayer().sendMessage("Interacted with an entity!");
         if (!itemStack.isSimilar(ItemManager.getAnimalCatcher())) {
+            event.getPlayer().sendMessage("its not an animalcatcher, fuck da code!");
             return;
         }
 
@@ -62,7 +63,9 @@ public class PlayerListener implements Listener {
         EntityType entityType = entity.getType();
 
         if(isCatchable(entityType)) {
+            event.getPlayer().sendMessage("its a catchable entity, to da code!");
             location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityType));
+            event.getPlayer().sendMessage("egg dropped..");
             player.launchProjectile(Egg.class);
             entity.remove();
             location.getWorld().playEffect(location, Effect.SMOKE, 4);
@@ -70,9 +73,9 @@ public class PlayerListener implements Listener {
         }
     }
 
-    // Set Entity to Baby if Ageable and Spawned By SpawnEgg
+    /** Set Entity to Baby if Ageable and Spawned By SpawnEgg */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onPlayerUseSpawnEgg(CreatureSpawnEvent event) {
+    public void onCreatureSpawn(CreatureSpawnEvent event) {
         if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) {
             return;
         }
@@ -82,7 +85,7 @@ public class PlayerListener implements Listener {
         }
     }
 
-    // Check if I Want Entity Catchable
+    /** Check if I Want Entity Catchable */
     public boolean isCatchable(EntityType entityType) {
         switch (entityType) {
             case CHICKEN:
@@ -101,10 +104,11 @@ public class PlayerListener implements Listener {
         }
     }
 
-    // Re-Apply Head Data on Pickup
+    /** Re-Apply Head Data on Pickup */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onHeadPickup(PlayerPickupItemEvent event) {
         if (event.getItem().getItemStack().getType().equals(Material.SKULL_ITEM)) {
+            event.getPlayer().sendMessage("picked up skull");
             ItemStack skull = event.getItem().getItemStack();
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
             for (HeadData h : ItemManager.headData.values()) {
@@ -113,6 +117,7 @@ public class PlayerListener implements Listener {
                     skull.setItemMeta(skullMeta);
                 }
             }
+            event.getPlayer().sendMessage("re-applied skull data");
         }
     }
 }

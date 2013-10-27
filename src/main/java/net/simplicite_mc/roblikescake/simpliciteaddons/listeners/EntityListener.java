@@ -1,6 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadData;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -23,7 +24,7 @@ public class EntityListener implements Listener {
         this.pl = pl;
     }
 
-    // Create Blood Effect on Damaged Entities
+    /** Create Blood Effect on Damaged Entities */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
         if(event.getEntity() instanceof LivingEntity && event.getDamager() instanceof LivingEntity) {
@@ -40,7 +41,7 @@ public class EntityListener implements Listener {
         }
     }
 
-    // Give a Mob/Player Head When Killed
+    /** Give a Mob/Player Head When Killed */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
         if (event.getEntity().getKiller() != null) {
@@ -52,22 +53,25 @@ public class EntityListener implements Listener {
             Player killer = event.getEntity().getKiller();
             String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
             int lootBonus = 0;
+            HeadData headData = ItemManager.headData.get(entityType);
 
             if (killer.getItemInHand() != null) {
                 lootBonus = killer.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2;
             }
 
-            if (entity instanceof Monster) {
+            if (headData == null) {
+                return;
+            }
+            if (entity instanceof Player) {
+                if (diceRoll <= (10 + lootBonus)) {
+                    String playerName = ((Player) entity).getName();
+                    entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
+                    pl.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
+                }
+            } else {
                 if (diceRoll <= (ItemManager.headData.get(entityType).getDropChance() + lootBonus)) {
                     entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
                     killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + ItemManager.headData.get(entityType).getDisplayName() + ChatColor.GREEN + " dropped!");
-                }
-            } else if (entity instanceof Player) {
-                if (diceRoll <= (10 + lootBonus)) {
-                    String playerName = ((Player) entity).getName();
-
-                    entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
-                    pl.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
                 }
             }
         }
