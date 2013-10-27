@@ -1,32 +1,30 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
-import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
+
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
 public class PlayerListener implements Listener {
-    public SimpliciteAddons pl;
-
-    public PlayerListener(SimpliciteAddons pl) {
-        this.pl = pl;
-    }
 
     /**
      * Join Message
@@ -64,6 +62,7 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         ItemStack itemStack = player.getItemInHand();
         event.getPlayer().sendMessage("Interacted with an entity!");
+
         if (!itemStack.isSimilar(ItemManager.getAnimalCatcher())) {
             event.getPlayer().sendMessage("its not an animalcatcher, fuck da code!");
             return;
@@ -73,7 +72,7 @@ public class PlayerListener implements Listener {
         Location location = entity.getLocation();
         EntityType entityType = entity.getType();
 
-        if (isCatchable(entityType)) {
+        if (Misc.isCatchable(entityType)) {
             event.getPlayer().sendMessage("its a catchable entity, to da code!");
             location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityType));
             event.getPlayer().sendMessage("egg dropped..");
@@ -99,42 +98,12 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * Check if I Want Entity Catchable
-     */
-    public boolean isCatchable(EntityType entityType) {
-        switch (entityType) {
-            case CHICKEN:
-            case COW:
-            case OCELOT:
-            case PIG:
-            case SHEEP:
-            case HORSE:
-            case SQUID:
-            case VILLAGER:
-            case MUSHROOM_COW:
-            case WOLF:
-                return true;
-            default:
-                return false;
-        }
-    }
-
-    /**
      * Re-Apply Head Data on Pickup
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onHeadPickup(PlayerPickupItemEvent event) {
-        if (event.getItem().getItemStack().getType().equals(Material.SKULL_ITEM)) {
-            event.getPlayer().sendMessage("picked up skull");
-            ItemStack skull = event.getItem().getItemStack();
-            SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
-            for (HeadData h : ItemManager.headData.values()) {
-                if (h.getOwner().equals(skullMeta.getOwner())) {
-                    skullMeta.setDisplayName(h.getDisplayName());
-                    skull.setItemMeta(skullMeta);
-                }
-            }
-            event.getPlayer().sendMessage("re-applied skull data");
-        }
+    public void onPlayerPickupItem(PlayerPickupItemEvent event) {
+        Item item = event.getItem();
+
+        HeadManager.applyHeadData(item);
     }
 }
