@@ -55,39 +55,41 @@ public class EntityListener implements Listener {
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
-        if (event.getEntity().getKiller() != null) {
-            Entity entity = event.getEntity();
-            EntityType entityType = event.getEntityType();
-            Player killer = event.getEntity().getKiller();
+        if (event.getEntity().getKiller() == null) {
+            return;
+        }
 
-            HeadData headData = ItemManager.headData.get(entityType);
+        Entity entity = event.getEntity();
+        EntityType entityType = event.getEntityType();
+        Player killer = event.getEntity().getKiller();
 
-            if (headData == null) {
-                return;
+        HeadData headData = ItemManager.headData.get(entityType);
+
+        if (headData == null) {
+            return;
+        }
+
+        int lootBonus = 0;
+
+        if (killer.getItemInHand() != null) {
+            lootBonus = killer.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2;
+        }
+
+        Location entityLocation = entity.getLocation();
+        Random random = new Random();
+        int diceRoll = random.nextInt(100);
+        String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
+
+        if (entity instanceof Player) {
+            if (diceRoll <= (10 + lootBonus)) {
+                String playerName = ((Player) entity).getName();
+                entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
+                pl.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
             }
-
-            int lootBonus = 0;
-
-            if (killer.getItemInHand() != null) {
-                lootBonus = killer.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2;
-            }
-
-            Location entityLocation = entity.getLocation();
-            Random random = new Random();
-            int diceRoll = random.nextInt(100);
-            String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
-
-            if (entity instanceof Player) {
-                if (diceRoll <= (10 + lootBonus)) {
-                    String playerName = ((Player) entity).getName();
-                    entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
-                    pl.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
-                }
-            } else {
-                if (diceRoll <= (ItemManager.headData.get(entityType).getDropChance() + lootBonus)) {
-                    entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
-                    killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + ItemManager.headData.get(entityType).getDisplayName() + ChatColor.GREEN + " dropped!");
-                }
+        } else {
+            if (diceRoll <= (ItemManager.headData.get(entityType).getDropChance() + lootBonus)) {
+                entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
+                killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + ItemManager.headData.get(entityType).getDisplayName() + ChatColor.GREEN + " dropped!");
             }
         }
     }
