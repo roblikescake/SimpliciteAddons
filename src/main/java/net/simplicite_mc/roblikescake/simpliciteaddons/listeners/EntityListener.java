@@ -56,23 +56,27 @@ public class EntityListener implements Listener {
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {
         if (event.getEntity().getKiller() != null) {
-            EntityType entityType = event.getEntityType();
             Entity entity = event.getEntity();
-            Location entityLocation = entity.getLocation();
-            Random random = new Random();
-            int diceRoll = random.nextInt(100);
+            EntityType entityType = event.getEntityType();
             Player killer = event.getEntity().getKiller();
-            String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
-            int lootBonus = 0;
+
             HeadData headData = ItemManager.headData.get(entityType);
+
+            if (headData == null) {
+                return;
+            }
+
+            int lootBonus = 0;
 
             if (killer.getItemInHand() != null) {
                 lootBonus = killer.getItemInHand().getEnchantmentLevel(Enchantment.LOOT_BONUS_MOBS) * 2;
             }
 
-            if (headData == null) {
-                return;
-            }
+            Location entityLocation = entity.getLocation();
+            Random random = new Random();
+            int diceRoll = random.nextInt(100);
+            String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
+
             if (entity instanceof Player) {
                 if (diceRoll <= (10 + lootBonus)) {
                     String playerName = ((Player) entity).getName();
