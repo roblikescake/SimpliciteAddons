@@ -1,7 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadData;
+import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;

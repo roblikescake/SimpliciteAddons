@@ -1,14 +1,20 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.*;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
+import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
+import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.XPBankListener;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
+
 public class SimpliciteAddons extends JavaPlugin{
+    public static SimpliciteAddons p;
 
     @Override
     public void onEnable() {
+        p = this;
+
         PluginManager pm = getServer().getPluginManager();
 
         pm.registerEvents(new PlayerListener(this), this);
