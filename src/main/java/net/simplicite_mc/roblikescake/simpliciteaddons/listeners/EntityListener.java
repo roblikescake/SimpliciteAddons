@@ -22,14 +22,16 @@ public class EntityListener implements Listener {
         this.pl = pl;
     }
 
-    /** Create Blood Effect on Damaged Entities */
+    /**
+     * Create Blood Effect on Damaged Entities
+     */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
-        if(event.getEntity() instanceof LivingEntity && event.getDamager() instanceof LivingEntity) {
+        if (event.getEntity() instanceof LivingEntity && event.getDamager() instanceof LivingEntity) {
             LivingEntity entityDamaged = (LivingEntity) event.getEntity();
             LivingEntity entityDamagedBy = (LivingEntity) event.getDamager();
 
-            if(entityDamaged instanceof Player || entityDamagedBy instanceof Player) {
+            if (entityDamaged instanceof Player || entityDamagedBy instanceof Player) {
                 Location baseLocation = entityDamaged.getLocation();
                 Location eyeLocation = entityDamaged.getEyeLocation();
 
@@ -41,7 +43,7 @@ public class EntityListener implements Listener {
 
     /**
      * Check EntityDeathEvents.
-     * <p>
+     * <p/>
      * These events are checked for the purpose of dropping
      * mob or player heads after they are killed.
      *

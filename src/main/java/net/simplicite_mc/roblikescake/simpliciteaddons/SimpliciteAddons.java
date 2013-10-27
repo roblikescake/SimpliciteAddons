@@ -8,7 +8,7 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.XPBankListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 
-public class SimpliciteAddons extends JavaPlugin{
+public class SimpliciteAddons extends JavaPlugin {
     public static SimpliciteAddons p;
 
     @Override

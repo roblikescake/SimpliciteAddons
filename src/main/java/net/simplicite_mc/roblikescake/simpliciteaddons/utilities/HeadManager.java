@@ -37,9 +37,10 @@ public class HeadManager {
             if (diceRoll <= (10 + lootBonus)) {
                 String playerName = ((Player) entity).getName();
                 entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
-                SimpliciteAddons.p.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN  + "!");
+                SimpliciteAddons.p.getServer().broadcastMessage(plPrefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN + "!");
             }
-        } else {
+        }
+        else {
             if (diceRoll <= (headData.getDropChance() + lootBonus)) {
                 entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
                 killer.sendMessage(plPrefix + ChatColor.GREEN + "A " + ChatColor.BLUE + headData.getDisplayName() + ChatColor.GREEN + " dropped!");
