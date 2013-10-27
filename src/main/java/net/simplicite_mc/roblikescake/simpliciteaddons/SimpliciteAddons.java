@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
-import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.XPBankListener;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 
 public class SimpliciteAddons extends JavaPlugin {
@@ -17,11 +17,11 @@ public class SimpliciteAddons extends JavaPlugin {
 
         PluginManager pm = getServer().getPluginManager();
 
-        pm.registerEvents(new PlayerListener(this), this);
-        pm.registerEvents(new EntityListener(this), this);
-        pm.registerEvents(new XPBankListener(this), this);
+        pm.registerEvents(new PlayerListener(), this);
+        pm.registerEvents(new EntityListener(), this);
 
-        new ItemManager(this);
+        new ItemManager();
+        new HeadManager();
     }
 
     @Override

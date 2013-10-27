@@ -12,15 +12,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 
 public class EntityListener implements Listener {
-    public SimpliciteAddons pl;
-
-    public EntityListener(SimpliciteAddons pl) {
-        this.pl = pl;
-    }
 
     /**
      * Create Blood Effect on Damaged Entities
