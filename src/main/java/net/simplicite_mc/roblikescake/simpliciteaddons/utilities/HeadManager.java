@@ -52,6 +52,12 @@ public class HeadManager {
         headData.put(EntityType.WITHER, new HeadData(10, "WitherGamer", "Wither Head"));
     }
 
+    /**
+     * Used for dropping the head of an entity.
+     * <p/>
+     * @param entity The entity to drop it's head
+     * @param killer The entity's killer
+     */
     public static void dropHeads(Entity entity, Player killer) {
         EntityType entityType = entity.getType();
         HeadData head = headData.get(entityType);
@@ -84,6 +90,11 @@ public class HeadManager {
         }
     }
 
+    /**
+     * Applies HeadData to a Skull Item upon pickup.
+     * <p/>
+     * @param item The item to apply HeadData to
+     */
     public static void applyHeadData(Item item) {
         if (!item.getType().equals(Material.SKULL_ITEM)) {
             return;
@@ -104,6 +115,12 @@ public class HeadManager {
         return headData.get(entityType).getOwner();
     }
 
+    /**
+     * Gets DisplayName for MobHead.
+     * <p/>
+     * @param entityType The entity
+     * @return the DisplayName
+     */
     public static String getDisplayName(EntityType entityType) {
         return headData.get(entityType).getDisplayName();
     }

@@ -18,7 +18,9 @@ public class ItemManager {
     }
 
     /**
-     * Create AnimalCatcher Recipe
+     * Creates the AnimalCatcher recipe.
+     * <p/>
+     * @return the recipe
      */
     public static ShapedRecipe getAnimalCatcherRecipe() {
         ShapedRecipe AnimalCatcher = new ShapedRecipe(getAnimalCatcher());
@@ -29,7 +31,9 @@ public class ItemManager {
     }
 
     /**
-     * Create AnimalCatcher Item
+     * Creates the AnimalCatcher item.
+     * <p/>
+     * @return the item
      */
     public static ItemStack getAnimalCatcher() {
         ItemStack itemStack = new ItemStack(Material.EGG);
@@ -40,7 +44,10 @@ public class ItemManager {
     }
 
     /**
-     * Create Animal SpawnEgg for MobCatcher
+     * Creates Animal SpawnEgg.
+     * <p/>
+     * @param entityType The entity
+     * @return the SpawnEgg
      */
     public static ItemStack getAnimalSpawnEgg(EntityType entityType) {
         ItemStack animalSpawnEgg = new ItemStack(Material.MONSTER_EGG);
@@ -49,7 +56,10 @@ public class ItemManager {
     }
 
     /**
-     * Create MobHead
+     * Creates MobHead.
+     * <p/>
+     * @param entityType The entity
+     * @return the MobHead
      */
     public static ItemStack getMobHead(EntityType entityType) {
         ItemStack mobHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
@@ -61,7 +71,10 @@ public class ItemManager {
     }
 
     /**
-     * Create PlayerHead
+     * Create PlayerHead.
+     * <p/>
+     * @param playerName The player's name
+     * @return the PlayerHead
      */
     public static ItemStack getPlayerHead(String playerName) {
         ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);

@@ -17,7 +17,10 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 public class EntityListener implements Listener {
 
     /**
-     * Create Blood Effect on Damaged Entities
+     * Check EntityDamageEvents.
+     * <p/>
+     * These events are checked for the purpose of applying
+     * a "blood effect" on a mob or player when attacked.
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
@@ -40,8 +43,6 @@ public class EntityListener implements Listener {
      * <p/>
      * These events are checked for the purpose of dropping
      * mob or player heads after they are killed.
-     *
-     * @param event The event to check
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onEntityDeath(EntityDeathEvent event) {

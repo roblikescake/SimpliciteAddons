@@ -27,7 +27,10 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 public class PlayerListener implements Listener {
 
     /**
-     * Join Message
+     * Check PlayerJoinEvents.
+     * <p/>
+     * These events are checked for the purpose of setting
+     * the join messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent e) {
@@ -36,7 +39,10 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * Quit Message
+     * Check PlayerQuitEvents.
+     * <p/>
+     * These events are checked for the purpose of setting
+     * the quit messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuit(PlayerQuitEvent e) {
@@ -45,7 +51,10 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * Kick Message
+     * Check PlayerKickEvents.
+     * <p/>
+     * These events are checked for the purpose of setting
+     * the kick messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerKick(PlayerKickEvent e) {
@@ -54,7 +63,10 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * When a player uses the Animal Catcher
+     * Check PlayerInteractEntityEvents.
+     * <p/>
+     * These events are checked for the purpose of dropping
+     * a spawn egg when a player uses the AnimalCatcher item.
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
@@ -84,7 +96,10 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * Set Entity to Baby if Ageable and Spawned By SpawnEgg
+     * Check CreatureSpawnEvents.
+     * <p/>
+     * These events are checked for the purpose of changing
+     * the entity spawned via SpawnEgg to a baby, if applicable.
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onCreatureSpawn(CreatureSpawnEvent event) {
@@ -98,7 +113,10 @@ public class PlayerListener implements Listener {
     }
 
     /**
-     * Re-Apply Head Data on Pickup
+     * Checks PlayerPickupItemEvents.
+     * <p/>
+     * These events are checked for the purpose of re-applying
+     * the HeadData of a head, as it is lost on placing the Head.
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerPickupItem(PlayerPickupItemEvent event) {

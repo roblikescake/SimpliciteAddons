@@ -5,7 +5,10 @@ import org.bukkit.entity.EntityType;
 public class Misc {
 
     /**
-     * Check if I Want Entity Catchable
+     * Check if an entity is catchable or not.
+     * <p/>
+     * @param entityType The entity to check
+     * @return true if catchable, false otherwise
      */
     public static boolean isCatchable(EntityType entityType) {
         switch (entityType) {
