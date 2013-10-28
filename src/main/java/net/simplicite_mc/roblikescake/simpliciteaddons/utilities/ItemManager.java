@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.material.MaterialData;
 import org.bukkit.material.SpawnEgg;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
@@ -46,12 +47,11 @@ public class ItemManager {
     /**
      * Creates Animal SpawnEgg.
      * <p/>
-     * @param entityType The entity
+     * @param entityShort The entity's ID number
      * @return the SpawnEgg
      */
-    public static ItemStack getAnimalSpawnEgg(EntityType entityType) {
-        ItemStack animalSpawnEgg = new ItemStack(Material.MONSTER_EGG);
-        animalSpawnEgg.setData(new SpawnEgg(entityType));
+    public static ItemStack getAnimalSpawnEgg(short entityShort) {
+        ItemStack animalSpawnEgg = new ItemStack(Material.MONSTER_EGG, 1, entityShort);
         return animalSpawnEgg;
     }
 

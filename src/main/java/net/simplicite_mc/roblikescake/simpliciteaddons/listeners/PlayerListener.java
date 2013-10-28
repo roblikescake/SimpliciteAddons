@@ -82,11 +82,12 @@ public class PlayerListener implements Listener {
 
         Entity entity = event.getRightClicked();
         EntityType entityType = entity.getType();
+        short entityShort = entity.getType().getTypeId();
         String entityName = entityType.name();
         Location location = entity.getLocation();
 
         if (Misc.isCatchable(entityType)) {
-            location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityType));
+            location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
             player.launchProjectile(Egg.class);
             entity.remove();
             location.getWorld().playEffect(location, Effect.SMOKE, 4);
