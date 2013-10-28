@@ -23,7 +23,7 @@ public class EntityListener implements Listener {
      * a "blood effect" on a mob or player when attacked.
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onEntityDamage(EntityDamageByEntityEvent event) {
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() instanceof LivingEntity && event.getDamager() instanceof LivingEntity) {
             LivingEntity entityDamaged = (LivingEntity) event.getEntity();
             LivingEntity entityDamagedBy = (LivingEntity) event.getDamager();

@@ -1,6 +1,5 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Ageable;
@@ -22,6 +21,7 @@ import org.bukkit.inventory.ItemStack;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
 public class PlayerListener implements Listener {
@@ -33,9 +33,10 @@ public class PlayerListener implements Listener {
      * the join messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player p = e.getPlayer();
-        e.setJoinMessage(ChatColor.BLACK + "[" + ChatColor.GREEN + "+" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.GREEN + " Online" + ChatColor.GRAY + "!");
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        String playerName = event.getPlayer().getName();
+
+        event.setJoinMessage(MessageManager.getJoinMessage(playerName));
     }
 
     /**
@@ -45,9 +46,10 @@ public class PlayerListener implements Listener {
      * the quit messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerQuit(PlayerQuitEvent e) {
-        Player p = e.getPlayer();
-        e.setQuitMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!");
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        String playerName = event.getPlayer().getName();
+
+        event.setQuitMessage(MessageManager.getQuitMessage(playerName));
     }
 
     /**
@@ -57,9 +59,10 @@ public class PlayerListener implements Listener {
      * the kick messages for players.
      */
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerKick(PlayerKickEvent e) {
-        Player p = e.getPlayer();
-        e.setLeaveMessage(ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + p.getName() + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!");
+    public void onPlayerKick(PlayerKickEvent event) {
+        String playerName = event.getPlayer().getName();
+
+        event.setLeaveMessage(MessageManager.getKickMessage(playerName));
     }
 
     /**
@@ -70,28 +73,24 @@ public class PlayerListener implements Listener {
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        String plPrefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Egg" + ChatColor.BLACK + "]";
         Player player = event.getPlayer();
         ItemStack itemStack = player.getItemInHand();
-        event.getPlayer().sendMessage("Interacted with an entity!");
 
         if (!itemStack.isSimilar(ItemManager.getAnimalCatcher())) {
-            event.getPlayer().sendMessage("its not an animalcatcher, fuck da code!");
             return;
         }
 
         Entity entity = event.getRightClicked();
-        Location location = entity.getLocation();
         EntityType entityType = entity.getType();
+        String entityName = entityType.name();
+        Location location = entity.getLocation();
 
         if (Misc.isCatchable(entityType)) {
-            event.getPlayer().sendMessage("its a catchable entity, to da code!");
             location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityType));
-            event.getPlayer().sendMessage("egg dropped..");
             player.launchProjectile(Egg.class);
             entity.remove();
             location.getWorld().playEffect(location, Effect.SMOKE, 4);
-            player.sendMessage(plPrefix + ChatColor.GREEN + " You caught a " + ChatColor.BLUE + entityType.name() + ChatColor.GREEN + "!");
+            player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
         }
     }
 

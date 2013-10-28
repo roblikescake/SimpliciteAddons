@@ -3,7 +3,6 @@ package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 import java.util.HashMap;
 import java.util.Random;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -75,18 +74,21 @@ public class HeadManager {
         Location entityLocation = entity.getLocation();
         Random random = new Random();
         int diceRoll = random.nextInt(100);
-        String prefix = ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] ";
 
         if (entity instanceof Player) {
             if (diceRoll <= (10 + lootBonus)) {
                 String playerName = ((Player) entity).getName();
+                String killerName = killer.getName();
+
                 entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getPlayerHead(playerName));
-                SimpliciteAddons.p.getServer().broadcastMessage(prefix + ChatColor.BLUE + playerName + ChatColor.GREEN + " was beheaded by " + ChatColor.BLUE + killer.getName() + ChatColor.GREEN + "!");
+                SimpliciteAddons.p.getServer().broadcastMessage(MessageManager.getPlayerBeheadedMessage(playerName, killerName));
             }
         }
         else if (diceRoll <= (head.getDropChance() + lootBonus)) {
+            String mobHeadDisplayName = head.getDisplayName();
+
             entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
-            killer.sendMessage(prefix + ChatColor.GREEN + "A " + ChatColor.BLUE + head.getDisplayName() + ChatColor.GREEN + " dropped!");
+            killer.sendMessage(MessageManager.getMobHeadDroppedMessage(mobHeadDisplayName));
         }
     }
 
@@ -111,6 +113,12 @@ public class HeadManager {
         }
     }
 
+    /**
+     * Gets Owner for MobHead.
+     * <p/>
+     * @param entityType The entity
+     * @return the Owner
+     */
     public static String getOwner(EntityType entityType) {
         return headData.get(entityType).getOwner();
     }
