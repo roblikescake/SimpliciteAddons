@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.MaterialData;
-import org.bukkit.material.SpawnEgg;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
@@ -25,9 +23,8 @@ public class ItemManager {
      */
     public static ShapedRecipe getAnimalCatcherRecipe() {
         ShapedRecipe AnimalCatcher = new ShapedRecipe(getAnimalCatcher());
-        AnimalCatcher.shape(" X ", "XXX", " X ");
+        AnimalCatcher.shape(" X ","XXX"," X ");
         AnimalCatcher.setIngredient('X', Material.EGG);
-
         return AnimalCatcher;
     }
 
