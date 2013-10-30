@@ -61,10 +61,6 @@ public class HeadManager {
         EntityType entityType = entity.getType();
         HeadData head = headData.get(entityType);
 
-        if (head == null) {
-            return;
-        }
-
         int lootBonus = 0;
 
         if (killer.getItemInHand() != null) {
@@ -84,11 +80,11 @@ public class HeadManager {
                 SimpliciteAddons.p.getServer().broadcastMessage(MessageManager.getPlayerBeheadedMessage(playerName, killerName));
             }
         }
-        else if (diceRoll <= (head.getDropChance() + lootBonus)) {
-            String mobHeadDisplayName = head.getDisplayName();
+        else if (head != null && diceRoll <= (head.getDropChance() + lootBonus)) {
+                String mobHeadDisplayName = head.getDisplayName();
 
-            entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
-            killer.sendMessage(MessageManager.getMobHeadDroppedMessage(mobHeadDisplayName));
+                entityLocation.getWorld().dropItemNaturally(entityLocation, ItemManager.getMobHead(entityType));
+                killer.sendMessage(MessageManager.getMobHeadDroppedMessage(mobHeadDisplayName));
         }
     }
 
