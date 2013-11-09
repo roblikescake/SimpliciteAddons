@@ -37,7 +37,7 @@ public class MessageManager {
     }
 
     public static String getBedLocationNullMessage() {
-        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.DARK_RED + "You haven't slept in a bed yet!";
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.DARK_RED + "You haven't slept in a bed yet or your bed was broken!";
     }
 
     public static String getCommandBedUsageMessage() {
