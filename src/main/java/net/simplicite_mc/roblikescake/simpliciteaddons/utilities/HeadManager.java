@@ -40,7 +40,7 @@ public class HeadManager {
         headData.put(EntityType.GHAST, new HeadData(4, "MHF_Ghast", "Ghast Head"));
         headData.put(EntityType.MAGMA_CUBE, new HeadData(3, "MHF_LavaSlime", "Magma Cube Head"));
         headData.put(EntityType.SILVERFISH, new HeadData(3, "AlexVMiner", "Silverfish Head"));
-        headData.put(EntityType.SKELETON, new HeadData(2, "skeleton639", "Skeleton Skull"));
+        headData.put(EntityType.SKELETON, new HeadData(2, "skeletonDSP", "Skeleton Skull"));
         headData.put(EntityType.SLIME, new HeadData(3, "HappyHappyMan", "Slime Head"));
         headData.put(EntityType.SPIDER, new HeadData(2, "MHF_Spider", "Spider Head"));
         headData.put(EntityType.WITCH, new HeadData(5, "scrafbrothers4", "Witch Head"));
