@@ -15,17 +15,28 @@ public class SimpliciteAddons extends JavaPlugin {
     public void onEnable() {
         p = this;
 
-        PluginManager pm = getServer().getPluginManager();
-
-        pm.registerEvents(new PlayerListener(), this);
-        pm.registerEvents(new EntityListener(), this);
-
-        new ItemManager();
-        new HeadManager();
+        registerListeners();
+        registerManagers();
     }
 
     @Override
     public void onDisable() {
+        clearCustomRecipes();
+    }
+
+    public void registerListeners() {
+        PluginManager pm = getServer().getPluginManager();
+
+        pm.registerEvents(new PlayerListener(), this);
+        pm.registerEvents(new EntityListener(), this);
+    }
+
+    public void registerManagers() {
+        new ItemManager();
+        new HeadManager();
+    }
+
+    public void clearCustomRecipes() {
         getServer().clearRecipes();
     }
 }
