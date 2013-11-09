@@ -7,12 +7,9 @@ version: ${project.version}-b${BUILD_NUMBER}
 commands:
    bed:
       description: Teleports you to your Bed location.
-      usage: /<command>
 
    spawn:
       description: Teleports you to the Server Spawn location.
-      usage: /<command>
 
    setspawn:
       description: Sets the Server Spawn Location.
-      usage: /<command>
