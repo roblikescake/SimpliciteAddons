@@ -85,17 +85,20 @@ public class PlayerListener implements Listener {
 
         Entity entity = event.getRightClicked();
         EntityType entityType = entity.getType();
+
+        if (!Misc.isCatchable(entityType)) {
+            return;
+        }
+
         short entityShort = entity.getType().getTypeId();
         String entityName = entityType.name();
         Location location = entity.getLocation();
 
-        if (Misc.isCatchable(entityType)) {
-            location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
-            player.launchProjectile(Egg.class);
-            entity.remove();
-            location.getWorld().playEffect(location, Effect.SMOKE, 4);
-            player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
-        }
+        location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
+        player.launchProjectile(Egg.class);
+        entity.remove();
+        location.getWorld().playEffect(location, Effect.SMOKE, 4);
+        player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
     }
 
     /**
@@ -106,13 +109,15 @@ public class PlayerListener implements Listener {
      */
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onCreatureSpawn(CreatureSpawnEvent event) {
-        if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER_EGG) {
+        if (!(event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER_EGG)) {
             return;
         }
 
-        if (event.getEntity() instanceof Ageable) {
-            ((Ageable) event.getEntity()).setBaby();
+        if (!(event.getEntity() instanceof Ageable)) {
+            return;
         }
+
+        ((Ageable) event.getEntity()).setBaby();
     }
 
     /**
