@@ -48,8 +48,7 @@ public class ItemManager {
      * @return the SpawnEgg
      */
     public static ItemStack getAnimalSpawnEgg(short entityShort) {
-        ItemStack animalSpawnEgg = new ItemStack(Material.MONSTER_EGG, 1, entityShort);
-        return animalSpawnEgg;
+        return (new ItemStack(Material.MONSTER_EGG, 1, entityShort));
     }
 
     /**
