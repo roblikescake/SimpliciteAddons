@@ -64,7 +64,7 @@ public class PlayerListener implements Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setLeaveMessage(MessageManager.getPlayerKickMessage(playerName));
+        event.setLeaveMessage(MessageManager.getPlayerQuitMessage(playerName));
         System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
     }
 
