@@ -17,6 +17,11 @@ public class CommandSetSpawn implements CommandExecutor {
         }
 
         Player player = (Player) sender;
+
+        if (!(player.isOp())) {
+            return false;
+        }
+
         int locationPlayerX = (int) player.getLocation().getX();
         int locationPlayerY = (int) player.getLocation().getY();
         int locationPlayerZ = (int) player.getLocation().getZ();
