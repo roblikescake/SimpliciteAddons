@@ -94,7 +94,7 @@ public class HeadManager {
      * @param item The item to apply HeadData to
      */
     public static void applyHeadData(Item item) {
-        if (!item.getType().equals(Material.SKULL_ITEM)) {
+        if (!item.getItemStack().getType().equals(Material.SKULL_ITEM)) {
             return;
         }
 
