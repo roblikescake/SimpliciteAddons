@@ -18,11 +18,13 @@ public class CommandBed implements CommandExecutor{
             return false;
         }
 
+        Player player = (Player) sender;
+
         if (!(args.length == 0)) {
-            return false;
+            player.sendMessage(MessageManager.getCommandBedUsageMessage());
+            return true;
         }
 
-        Player player = (Player) sender;
         Location locationBed = player.getBedSpawnLocation();
 
         if (locationBed == null) {

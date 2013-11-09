@@ -19,11 +19,13 @@ public class CommandSpawn implements CommandExecutor {
             return false;
         }
 
+        Player player = (Player) sender;
+
         if (!(args.length == 0)) {
-            return false;
+            player.sendMessage(MessageManager.getCommandSpawnUsageMessage());
+            return true;
         }
 
-        Player player = (Player) sender;
         Location locationSpawn = Bukkit.getWorlds().get(0).getSpawnLocation();
 
         player.teleport(locationSpawn);

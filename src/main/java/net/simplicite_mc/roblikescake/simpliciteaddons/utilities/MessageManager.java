@@ -39,4 +39,16 @@ public class MessageManager {
     public static String getBedLocationNullMessage() {
         return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.DARK_RED + "You haven't slept in a bed yet!";
     }
+
+    public static String getCommandBedUsageMessage() {
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/bed";
+    }
+
+    public static String getCommandSpawnUsageMessage() {
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/spawn";
+    }
+
+    public static String getCommandSetSpawnUsageMessage() {
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/spawn";
+    }
 }

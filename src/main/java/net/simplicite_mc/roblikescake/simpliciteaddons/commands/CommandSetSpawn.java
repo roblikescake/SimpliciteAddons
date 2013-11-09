@@ -18,14 +18,15 @@ public class CommandSetSpawn implements CommandExecutor {
             return false;
         }
 
-        if (!(args.length == 0)) {
-            return false;
-        }
-
         Player player = (Player) sender;
 
+        if (!(args.length == 0)) {
+            player.sendMessage(MessageManager.getCommandSetSpawnUsageMessage());
+            return true;
+        }
+
         if (!(player.isOp())) {
-            return false;
+            return true;
         }
 
         int locationPlayerX = (int) player.getLocation().getX();
