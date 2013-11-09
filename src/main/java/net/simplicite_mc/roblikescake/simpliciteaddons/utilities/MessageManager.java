@@ -9,7 +9,7 @@ public class MessageManager {
     }
 
     public static String getPlayerJoinConsoleMessage(String playerName) {
-        return "[+] " + playerName + " is now online!";
+        return "[+] " + playerName + " joined!";
     }
 
     public static String getPlayerQuitMessage(String playerName) {
@@ -17,7 +17,7 @@ public class MessageManager {
     }
 
     public static String getPlayerQuitConsoleMessage(String playerName) {
-        return "[-] " + playerName + " is now offline!";
+        return "[-] " + playerName + " left!";
     }
 
     public static String getAnimalCaughtMessage(String entityName) {
