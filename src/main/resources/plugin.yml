@@ -12,3 +12,7 @@ commands:
    spawn:
       description: Teleports you to the Server Spawn location.
       usage: /<command>
+
+   setspawn:
+      description: Sets the Server Spawn Location.
+      usage: /<command>

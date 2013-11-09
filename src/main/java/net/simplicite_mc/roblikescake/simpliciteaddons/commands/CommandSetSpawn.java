@@ -1,6 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.commands;
 
-import org.bukkit.Location;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,9 +17,11 @@ public class CommandSetSpawn implements CommandExecutor {
         }
 
         Player player = (Player) sender;
-        Location locationPlayer = player.getLocation();
+        int locationPlayerX = (int) player.getLocation().getX();
+        int locationPlayerY = (int) player.getLocation().getY();
+        int locationPlayerZ = (int) player.getLocation().getZ();
 
-
+        Bukkit.getWorlds().get(0).setSpawnLocation(locationPlayerX, locationPlayerY, locationPlayerZ);
         return true;
     }
 }
