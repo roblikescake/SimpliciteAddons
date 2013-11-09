@@ -13,12 +13,14 @@ public class CommandSpawn implements CommandExecutor {
             return false;
         }
 
-        if (command.getName().equalsIgnoreCase("spawn")) {
-            Player player = (Player) sender;
-            Location locationSpawn = Bukkit.getWorlds().get(0).getSpawnLocation();
-
-            player.teleport(locationSpawn);
+        if (!(command.getName().equalsIgnoreCase("spawn"))) {
+            return false;
         }
+
+        Player player = (Player) sender;
+        Location locationSpawn = Bukkit.getWorlds().get(0).getSpawnLocation();
+
+        player.teleport(locationSpawn);
         return true;
     }
 }

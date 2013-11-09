@@ -8,3 +8,7 @@ commands:
    bed:
       description: Teleports you to your Bed location.
       usage: /<command>
+
+   spawn:
+      description: Teleports you to the Server Spawn location.
+      usage: /<command>
