@@ -35,4 +35,8 @@ public class MessageManager {
     public static String getConsoleOnlyMessage() {
         return "Console cannot execute this command!";
     }
+
+    public static String getBedLocationNullMessage() {
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.DARK_RED + "You haven't slept in a bed yet!";
+    }
 }

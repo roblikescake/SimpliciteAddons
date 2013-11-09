@@ -22,6 +22,7 @@ public class CommandBed implements CommandExecutor{
         Location locationBed = player.getBedSpawnLocation();
 
         if (locationBed == null) {
+            player.sendMessage(MessageManager.getBedLocationNullMessage());
             return false;
         }
 
