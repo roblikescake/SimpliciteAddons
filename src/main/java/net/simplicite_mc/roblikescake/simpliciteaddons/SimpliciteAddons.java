@@ -1,5 +1,8 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandBed;
+import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSetSpawn;
+import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSpawn;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -17,6 +20,7 @@ public class SimpliciteAddons extends JavaPlugin {
 
         registerListeners();
         registerManagers();
+        registerCommands();
     }
 
     @Override
@@ -38,5 +42,11 @@ public class SimpliciteAddons extends JavaPlugin {
 
     public void clearCustomRecipes() {
         getServer().clearRecipes();
+    }
+
+    public void registerCommands() {
+        getCommand("bed").setExecutor(new CommandBed());
+        getCommand("spawn").setExecutor(new CommandSpawn());
+        getCommand("setspawn").setExecutor(new CommandSetSpawn());
     }
 }
