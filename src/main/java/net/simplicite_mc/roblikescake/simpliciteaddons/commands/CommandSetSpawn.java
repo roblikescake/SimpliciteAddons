@@ -18,6 +18,10 @@ public class CommandSetSpawn implements CommandExecutor {
             return false;
         }
 
+        if (!(args.length == 0)) {
+            return false;
+        }
+
         Player player = (Player) sender;
 
         if (!(player.isOp())) {
