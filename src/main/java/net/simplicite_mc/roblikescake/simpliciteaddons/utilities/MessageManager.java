@@ -31,4 +31,8 @@ public class MessageManager {
     public static String getMobHeadDroppedMessage(String mobHeadDisplayName) {
         return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] " + ChatColor.GREEN + "A " + ChatColor.BLUE + mobHeadDisplayName + ChatColor.GREEN + " dropped!";
     }
+
+    public static String getConsoleOnlyMessage() {
+        return "Console cannot execute this command!";
+    }
 }

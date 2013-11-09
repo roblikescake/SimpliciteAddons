@@ -1,5 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.commands;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 public class CommandSpawn implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
+            System.out.println(MessageManager.getConsoleOnlyMessage());
             return false;
         }
 
