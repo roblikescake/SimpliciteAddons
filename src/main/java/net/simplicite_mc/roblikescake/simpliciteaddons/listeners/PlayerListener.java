@@ -36,7 +36,9 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setJoinMessage(MessageManager.getJoinMessage(playerName));
+        event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
+        // Let's also print this to console, to fix Issue #8
+        System.out.println();
     }
 
     /**
@@ -49,7 +51,7 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setQuitMessage(MessageManager.getQuitMessage(playerName));
+        event.setQuitMessage(MessageManager.getPlayerQuitMessage(playerName));
     }
 
     /**
@@ -62,7 +64,7 @@ public class PlayerListener implements Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setLeaveMessage(MessageManager.getKickMessage(playerName));
+        event.setLeaveMessage(MessageManager.getPlayerKickMessage(playerName));
     }
 
     /**

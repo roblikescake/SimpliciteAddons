@@ -4,15 +4,15 @@ import org.bukkit.ChatColor;
 
 public class MessageManager {
 
-    public static String getJoinMessage(String playerName) {
+    public static String getPlayerJoinMessage(String playerName) {
         return ChatColor.BLACK + "[" + ChatColor.GREEN + "+" + ChatColor.BLACK + "] " + ChatColor.AQUA + playerName + ChatColor.GRAY + " is now" + ChatColor.GREEN + " Online" + ChatColor.GRAY + "!";
     }
 
-    public static String getQuitMessage(String playerName) {
+    public static String getPlayerQuitMessage(String playerName) {
         return ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + playerName + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!";
     }
 
-    public static String getKickMessage(String playerName) {
+    public static String getPlayerKickMessage(String playerName) {
         return ChatColor.BLACK + "[" + ChatColor.RED + "-" + ChatColor.BLACK + "] " + ChatColor.AQUA + playerName + ChatColor.GRAY + " is now" + ChatColor.RED + " Offline" + ChatColor.GRAY + "!";
     }
 
