@@ -1,5 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Ageable;
@@ -50,7 +51,11 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setQuitMessage(MessageManager.getPlayerQuitMessage(playerName));
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            player.sendMessage(MessageManager.getPlayerQuitMessage(playerName));
+        }
+
+        event.setQuitMessage(null);
         System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
     }
 
@@ -64,7 +69,11 @@ public class PlayerListener implements Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         String playerName = event.getPlayer().getName();
 
-        event.setLeaveMessage(MessageManager.getPlayerQuitMessage(playerName));
+        for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+            player.sendMessage(MessageManager.getPlayerQuitMessage(playerName));
+        }
+
+        event.setLeaveMessage(null);
         System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
     }
 
