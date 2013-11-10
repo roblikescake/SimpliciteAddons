@@ -1,8 +1,8 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.commands;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +27,7 @@ public class CommandSpawn implements CommandExecutor {
             return true;
         }
 
-        Location locationSpawn = Bukkit.getWorlds().get(0).getSpawnLocation();
+        Location locationSpawn = SimpliciteAddons.p.getServer().getWorlds().get(0).getSpawnLocation();
 
         player.teleport(locationSpawn);
         return true;
