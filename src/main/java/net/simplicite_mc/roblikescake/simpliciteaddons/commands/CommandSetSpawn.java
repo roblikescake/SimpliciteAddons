@@ -1,6 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.commands;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

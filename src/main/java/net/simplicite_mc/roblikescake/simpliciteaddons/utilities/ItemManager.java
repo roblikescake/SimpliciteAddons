@@ -1,5 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -7,8 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-
-import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
 public class ItemManager {
 

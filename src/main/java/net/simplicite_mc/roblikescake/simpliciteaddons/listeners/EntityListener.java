@@ -1,5 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
+
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,8 +13,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
-
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 
 public class EntityListener implements Listener {
 

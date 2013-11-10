@@ -1,7 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
-import java.util.HashMap;
-import java.util.Random;
+import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
+import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,8 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
-import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
+import java.util.HashMap;
+import java.util.Random;
 
 public class HeadManager {
     public static HashMap<EntityType, HeadData> headData;

@@ -1,5 +1,10 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
+import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -19,11 +24,6 @@ import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
-import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
 public class PlayerListener implements Listener {
 
