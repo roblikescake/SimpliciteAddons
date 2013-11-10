@@ -49,6 +49,6 @@ public class MessageManager {
     }
 
     public static String getCommandSetSpawnUsageMessage() {
-        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/spawn";
+        return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/setspawn";
     }
 }
