@@ -1,6 +1,5 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
@@ -51,11 +50,7 @@ public class PlayerListener implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         String playerName = event.getPlayer().getName();
 
-        for (Player player : SimpliciteAddons.p.getServer().getOnlinePlayers()) {
-            player.sendMessage(MessageManager.getPlayerQuitMessage(playerName));
-        }
-
-        event.setQuitMessage(null);
+        event.setQuitMessage(MessageManager.getPlayerQuitMessage(playerName));
         System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
     }
 
@@ -69,11 +64,7 @@ public class PlayerListener implements Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         String playerName = event.getPlayer().getName();
 
-        for (Player player : SimpliciteAddons.p.getServer().getOnlinePlayers()) {
-            player.sendMessage(MessageManager.getPlayerQuitMessage(playerName));
-        }
-
-        event.setLeaveMessage(null);
+        event.setLeaveMessage(MessageManager.getPlayerQuitMessage(playerName));
         System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
     }
 
