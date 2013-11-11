@@ -51,4 +51,15 @@ public class MessageManager {
     public static String getCommandSetSpawnUsageMessage() {
         return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/setspawn";
     }
+
+    public static String getPlayerMOTDMessage() {
+        String line1 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n";
+        String line2 = ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC\n";
+        String line3 = ChatColor.AQUA + "                    Barebones " + ChatColor.GOLD + "0.2.22\n\n";
+        String line4 = ChatColor.DARK_GREEN + "                     Latest Changes:\n";
+        String line5 = ChatColor.YELLOW + "                      Added an MOTD\n";
+        String line6 = ChatColor.YELLOW + "        Added /bed & /spawn commands\n";
+        String line7 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
+        return line1 + line2 + line3 + line4 + line5 + line6 + line7;
+    }
 }

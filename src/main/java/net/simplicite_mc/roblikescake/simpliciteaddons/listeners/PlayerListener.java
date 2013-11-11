@@ -1,5 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
@@ -34,9 +35,11 @@ public class PlayerListener implements Listener {
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        String playerName = event.getPlayer().getName();
+        Player player = event.getPlayer();
+        String playerName = player.getName();
 
         event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
+        sendPlayerMOTD(player);
         System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
     }
 
@@ -131,5 +134,14 @@ public class PlayerListener implements Listener {
         Item item = event.getItem();
 
         HeadManager.applyHeadData(item);
+    }
+
+    public void sendPlayerMOTD(final Player player) {
+        SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
+            @Override
+            public void run() {
+                player.sendMessage(MessageManager.getPlayerMOTDMessage());
+            }
+        }, 5L);
     }
 }
