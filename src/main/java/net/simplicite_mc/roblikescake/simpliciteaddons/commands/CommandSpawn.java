@@ -16,10 +16,6 @@ public class CommandSpawn implements CommandExecutor {
             return false;
         }
 
-        if (!(command.getName().equalsIgnoreCase("spawn"))) {
-            return false;
-        }
-
         Player player = (Player) sender;
 
         if (!(args.length == 0)) {

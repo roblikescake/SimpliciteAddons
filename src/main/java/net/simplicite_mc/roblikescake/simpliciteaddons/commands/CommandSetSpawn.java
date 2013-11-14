@@ -15,10 +15,6 @@ public class CommandSetSpawn implements CommandExecutor {
             return false;
         }
 
-        if (!(command.getName().equalsIgnoreCase("setspawn"))) {
-            return false;
-        }
-
         Player player = (Player) sender;
 
         if (!(args.length == 0)) {
