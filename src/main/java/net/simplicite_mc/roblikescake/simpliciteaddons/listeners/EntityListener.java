@@ -6,6 +6,7 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class EntityListener implements Listener {
 
@@ -62,5 +64,22 @@ public class EntityListener implements Listener {
 		Player killer = event.getEntity().getKiller();
 
 		HeadManager.dropHeads(entity, killer);
+	}
+
+	/**
+	 * Check EntityExplodeEvents.
+	 * <p/>
+	 * These events are checked for the purpose of preventing
+	 * creeper explosions.
+	 */
+	@EventHandler(priority = EventPriority.NORMAL)
+	public void onEntityExplode(EntityExplodeEvent event) {
+		EntityType entityType = event.getEntityType();
+
+		if (!((entityType == EntityType.CREEPER) || (entityType == EntityType.ENDER_DRAGON) || (entityType == EntityType.WITHER))) {
+			return;
+		}
+
+		event.setCancelled(true);
 	}
 }
