@@ -8,8 +8,8 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class ServerListener implements Listener {
 
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onServerPing(ServerListPingEvent event) {
-        event.setMotd(MessageManager.getServerMOTDMessage());
-    }
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onServerPing(ServerListPingEvent event) {
+		event.setMotd(MessageManager.getServerMOTDMessage());
+	}
 }

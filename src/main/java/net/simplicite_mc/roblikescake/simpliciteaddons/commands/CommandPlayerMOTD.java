@@ -7,15 +7,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandPlayerMOTD implements CommandExecutor {
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            System.out.println(MessageManager.getConsoleOnlyMessage());
-            return false;
-        }
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if (!(sender instanceof Player)) {
+			System.out.println(MessageManager.getConsoleOnlyMessage());
+			return false;
+		}
 
-        Player player = (Player) sender;
+		Player player = (Player) sender;
 
-        player.sendMessage(MessageManager.getPlayerMOTDMessage());
-        return true;
-    }
+		player.sendMessage(MessageManager.getPlayerMOTDMessage());
+		return true;
+	}
 }

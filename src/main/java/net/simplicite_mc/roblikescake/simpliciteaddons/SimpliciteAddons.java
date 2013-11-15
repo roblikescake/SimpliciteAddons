@@ -14,43 +14,43 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class SimpliciteAddons extends JavaPlugin {
-    public static SimpliciteAddons p;
+	public static SimpliciteAddons p;
 
-    @Override
-    public void onEnable() {
-        p = this;
+	@Override
+	public void onEnable() {
+		p = this;
 
-        registerListeners();
-        registerManagers();
-        registerCommands();
-    }
+		registerListeners();
+		registerManagers();
+		registerCommands();
+	}
 
-    @Override
-    public void onDisable() {
-        clearCustomRecipes();
-    }
+	@Override
+	public void onDisable() {
+		clearCustomRecipes();
+	}
 
-    public void registerListeners() {
-        PluginManager pm = getServer().getPluginManager();
+	public void registerListeners() {
+		PluginManager pm = getServer().getPluginManager();
 
-        pm.registerEvents(new PlayerListener(), this);
-        pm.registerEvents(new EntityListener(), this);
-        pm.registerEvents(new ServerListener(), this);
-    }
+		pm.registerEvents(new PlayerListener(), this);
+		pm.registerEvents(new EntityListener(), this);
+		pm.registerEvents(new ServerListener(), this);
+	}
 
-    public void registerManagers() {
-        new ItemManager();
-        new HeadManager();
-    }
+	public void registerManagers() {
+		new ItemManager();
+		new HeadManager();
+	}
 
-    public void clearCustomRecipes() {
-        getServer().clearRecipes();
-    }
+	public void clearCustomRecipes() {
+		getServer().clearRecipes();
+	}
 
-    public void registerCommands() {
-        getCommand("bed").setExecutor(new CommandBed());
-        getCommand("spawn").setExecutor(new CommandSpawn());
-        getCommand("setspawn").setExecutor(new CommandSetSpawn());
-        getCommand("motd").setExecutor(new CommandPlayerMOTD());
-    }
+	public void registerCommands() {
+		getCommand("bed").setExecutor(new CommandBed());
+		getCommand("spawn").setExecutor(new CommandSpawn());
+		getCommand("setspawn").setExecutor(new CommandSetSpawn());
+		getCommand("motd").setExecutor(new CommandPlayerMOTD());
+	}
 }

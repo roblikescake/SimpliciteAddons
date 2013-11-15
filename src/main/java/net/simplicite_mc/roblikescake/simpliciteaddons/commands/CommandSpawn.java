@@ -10,22 +10,22 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CommandSpawn implements CommandExecutor {
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            System.out.println(MessageManager.getConsoleOnlyMessage());
-            return false;
-        }
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if (!(sender instanceof Player)) {
+			System.out.println(MessageManager.getConsoleOnlyMessage());
+			return false;
+		}
 
-        Player player = (Player) sender;
+		Player player = (Player) sender;
 
-        if (!(args.length == 0)) {
-            player.sendMessage(MessageManager.getCommandSpawnUsageMessage());
-            return true;
-        }
+		if (!(args.length == 0)) {
+			player.sendMessage(MessageManager.getCommandSpawnUsageMessage());
+			return true;
+		}
 
-        Location locationSpawn = SimpliciteAddons.p.getServer().getWorlds().get(0).getSpawnLocation();
+		Location locationSpawn = SimpliciteAddons.p.getServer().getWorlds().get(0).getSpawnLocation();
 
-        player.teleport(locationSpawn);
-        return true;
-    }
+		player.teleport(locationSpawn);
+		return true;
+	}
 }

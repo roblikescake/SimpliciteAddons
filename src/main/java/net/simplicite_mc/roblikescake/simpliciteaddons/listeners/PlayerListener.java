@@ -27,121 +27,121 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
-    /**
-     * Check PlayerJoinEvents.
-     * <p/>
-     * These events are checked for the purpose of setting
-     * the join messages for players.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        String playerName = player.getName();
+	/**
+	 * Check PlayerJoinEvents.
+	 * <p/>
+	 * These events are checked for the purpose of setting
+	 * the join messages for players.
+	 */
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		Player player = event.getPlayer();
+		String playerName = player.getName();
 
-        event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
-        sendPlayerMOTD(player);
-        System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
-    }
+		event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
+		sendPlayerMOTD(player);
+		System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
+	}
 
-    /**
-     * Check PlayerQuitEvents.
-     * <p/>
-     * These events are checked for the purpose of setting
-     * the quit messages for players.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerQuit(PlayerQuitEvent event) {
-        String playerName = event.getPlayer().getName();
+	/**
+	 * Check PlayerQuitEvents.
+	 * <p/>
+	 * These events are checked for the purpose of setting
+	 * the quit messages for players.
+	 */
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerQuit(PlayerQuitEvent event) {
+		String playerName = event.getPlayer().getName();
 
-        event.setQuitMessage(MessageManager.getPlayerQuitMessage(playerName));
-        System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
-    }
+		event.setQuitMessage(MessageManager.getPlayerQuitMessage(playerName));
+		System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
+	}
 
-    /**
-     * Check PlayerKickEvents.
-     * <p/>
-     * These events are checked for the purpose of setting
-     * the kick messages for players.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerKick(PlayerKickEvent event) {
-        String playerName = event.getPlayer().getName();
+	/**
+	 * Check PlayerKickEvents.
+	 * <p/>
+	 * These events are checked for the purpose of setting
+	 * the kick messages for players.
+	 */
+	@EventHandler(priority = EventPriority.HIGHEST)
+	public void onPlayerKick(PlayerKickEvent event) {
+		String playerName = event.getPlayer().getName();
 
-        event.setLeaveMessage(MessageManager.getPlayerQuitMessage(playerName));
-        System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
-    }
+		event.setLeaveMessage(MessageManager.getPlayerQuitMessage(playerName));
+		System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
+	}
 
-    /**
-     * Check PlayerInteractEntityEvents.
-     * <p/>
-     * These events are checked for the purpose of dropping
-     * a spawn egg when a player uses the AnimalCatcher item.
-     */
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        Player player = event.getPlayer();
-        ItemStack itemStack = player.getItemInHand();
+	/**
+	 * Check PlayerInteractEntityEvents.
+	 * <p/>
+	 * These events are checked for the purpose of dropping
+	 * a spawn egg when a player uses the AnimalCatcher item.
+	 */
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
+		Player player = event.getPlayer();
+		ItemStack itemStack = player.getItemInHand();
 
-        if (!itemStack.isSimilar(ItemManager.getAnimalCatcher())) {
-            return;
-        }
+		if (!itemStack.isSimilar(ItemManager.getAnimalCatcher())) {
+			return;
+		}
 
-        Entity entity = event.getRightClicked();
-        EntityType entityType = entity.getType();
+		Entity entity = event.getRightClicked();
+		EntityType entityType = entity.getType();
 
-        if (!Misc.isCatchable(entityType)) {
-            return;
-        }
+		if (!Misc.isCatchable(entityType)) {
+			return;
+		}
 
-        short entityShort = entity.getType().getTypeId();
-        String entityName = entityType.name();
-        Location location = entity.getLocation();
+		short entityShort = entity.getType().getTypeId();
+		String entityName = entityType.name();
+		Location location = entity.getLocation();
 
-        location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
-        player.launchProjectile(Egg.class);
-        entity.remove();
-        location.getWorld().playEffect(location, Effect.SMOKE, 4);
-        player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
-    }
+		location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
+		player.launchProjectile(Egg.class);
+		entity.remove();
+		location.getWorld().playEffect(location, Effect.SMOKE, 4);
+		player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
+	}
 
-    /**
-     * Check CreatureSpawnEvents.
-     * <p/>
-     * These events are checked for the purpose of changing
-     * the entity spawned via SpawnEgg to a baby, if applicable.
-     */
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onCreatureSpawn(CreatureSpawnEvent event) {
-        if (!(event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER_EGG)) {
-            return;
-        }
+	/**
+	 * Check CreatureSpawnEvents.
+	 * <p/>
+	 * These events are checked for the purpose of changing
+	 * the entity spawned via SpawnEgg to a baby, if applicable.
+	 */
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onCreatureSpawn(CreatureSpawnEvent event) {
+		if (!(event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER_EGG)) {
+			return;
+		}
 
-        if (!(event.getEntity() instanceof Ageable)) {
-            return;
-        }
+		if (!(event.getEntity() instanceof Ageable)) {
+			return;
+		}
 
-        ((Ageable) event.getEntity()).setBaby();
-    }
+		((Ageable) event.getEntity()).setBaby();
+	}
 
-    /**
-     * Checks PlayerPickupItemEvents.
-     * <p/>
-     * These events are checked for the purpose of re-applying
-     * the HeadData of a head, as it is lost on placing the Head.
-     */
-    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-    public void onPlayerPickupItem(PlayerPickupItemEvent event) {
-        Item item = event.getItem();
+	/**
+	 * Checks PlayerPickupItemEvents.
+	 * <p/>
+	 * These events are checked for the purpose of re-applying
+	 * the HeadData of a head, as it is lost on placing the Head.
+	 */
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onPlayerPickupItem(PlayerPickupItemEvent event) {
+		Item item = event.getItem();
 
-        HeadManager.applyHeadData(item);
-    }
+		HeadManager.applyHeadData(item);
+	}
 
-    public void sendPlayerMOTD(final Player player) {
-        SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
-            @Override
-            public void run() {
-                player.sendMessage(MessageManager.getPlayerMOTDMessage());
-            }
-        }, 5L);
-    }
+	public void sendPlayerMOTD(final Player player) {
+		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
+			@Override
+			public void run() {
+				player.sendMessage(MessageManager.getPlayerMOTDMessage());
+			}
+		}, 5L);
+	}
 }
