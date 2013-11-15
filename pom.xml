@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.simplicite_mc.roblikescake.simpliciteaddons</groupId>
     <artifactId>SimpliciteAddons</artifactId>
-    <version>1.0</version>
+    <version>0.2</version>
     <name>SimpliciteAddons</name>
     <url>https://github.com/roblikescake/SimpliciteAddons</url>
     <issueManagement>
