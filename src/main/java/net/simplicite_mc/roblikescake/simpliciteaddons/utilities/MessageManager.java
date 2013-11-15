@@ -69,6 +69,6 @@ public class MessageManager {
 	}
 
 	public static String getServerMOTDMessage() {
-		return ChatColor.DARK_AQUA + "Simplicite" + ChatColor.BLUE + "MC" + ChatColor.AQUA + "Barebones" + ChatColor.GOLD + getPluginVersionNumber();
+		return ChatColor.DARK_AQUA + "Simplicite" + ChatColor.BLUE + "MC " + ChatColor.AQUA + "Barebones " + ChatColor.GOLD + getPluginVersionNumber();
 	}
 }
