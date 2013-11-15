@@ -13,3 +13,6 @@ commands:
 
    setspawn:
       description: Sets the Server Spawn Location.
+
+   motd:
+      description: Displays the PlayerMOTD.

@@ -1,6 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandBed;
+import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandPlayerMOTD;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSetSpawn;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSpawn;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
@@ -48,5 +49,6 @@ public class SimpliciteAddons extends JavaPlugin {
         getCommand("bed").setExecutor(new CommandBed());
         getCommand("spawn").setExecutor(new CommandSpawn());
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
+        getCommand("motd").setExecutor(new CommandPlayerMOTD());
     }
 }
