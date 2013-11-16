@@ -32,8 +32,9 @@ public class BlockListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onWaterUpdate(BlockFromToEvent event) {
 		Block blockFrom = event.getBlock();
+		Block blockTo = event.getToBlock();
 
-		if (!(blockFrom.getType() == Material.WATER)) {
+		if (!((blockFrom.getType() == Material.AIR) && (blockTo.getType() == Material.WATER))) {
 			return;
 		}
 
