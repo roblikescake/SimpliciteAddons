@@ -4,6 +4,7 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandBed;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandPlayerMOTD;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSetSpawn;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSpawn;
+import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.BlockListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.ServerListener;
@@ -36,6 +37,7 @@ public class SimpliciteAddons extends JavaPlugin {
 		pm.registerEvents(new PlayerListener(), this);
 		pm.registerEvents(new EntityListener(), this);
 		pm.registerEvents(new ServerListener(), this);
+		pm.registerEvents(new BlockListener(), this);
 	}
 
 	public void registerManagers() {
