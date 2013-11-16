@@ -8,6 +8,9 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.Entity;
@@ -17,6 +20,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -136,6 +140,23 @@ public class PlayerListener implements Listener {
 		HeadManager.applyHeadData(item);
 	}
 
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onBlockPlace(BlockPlaceEvent event) {
+		Block blockPlaced = event.getBlockPlaced();
+
+		if (!(blockPlaced.getType() == Material.SPONGE)) {
+			return;
+		}
+
+		int spongeX = blockPlaced.getX();
+		int spongeY = blockPlaced.getY();
+		int spongeZ = blockPlaced.getZ();
+		int spongeClearRadius = 2;
+		World world = blockPlaced.getWorld();
+
+		clearSpongeWater(world, spongeX, spongeY, spongeZ, spongeClearRadius);
+	}
+
 	public void sendPlayerMOTD(final Player player) {
 		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
 			@Override
@@ -143,5 +164,17 @@ public class PlayerListener implements Listener {
 				player.sendMessage(MessageManager.getPlayerMOTDMessage());
 			}
 		}, 5L);
+	}
+
+	public void clearSpongeWater(World world, int spongeX, int spongeY, int spongeZ, int spongeClearRadius) {
+		for (int radiusX = -spongeClearRadius; radiusX <= spongeClearRadius; radiusX++) {
+			for (int radiusY = -spongeClearRadius; radiusY <= spongeClearRadius; radiusY++) {
+				for (int radiusZ = -spongeClearRadius; radiusZ <= spongeClearRadius; radiusZ++) {
+					if (Misc.isBlockWater(world, spongeX + radiusX, spongeY + radiusY, spongeZ + radiusZ)) {
+						world.getBlockAt(spongeX + radiusX, spongeY + radiusY, spongeZ + radiusZ).setType(Material.AIR);
+					}
+				}
+			}
+		}
 	}
 }

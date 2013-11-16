@@ -1,5 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 
 public class Misc {
@@ -27,5 +29,11 @@ public class Misc {
 			default:
 				return false;
 		}
+	}
+
+	public static boolean isBlockWater(World world, int spongeX, int spongeY, int spongeZ) {
+		Block block = world.getBlockAt(spongeX, spongeY, spongeZ);
+		int id = block.getTypeId();
+		return id == 8 || id == 9;
 	}
 }
