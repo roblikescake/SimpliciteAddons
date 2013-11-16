@@ -34,13 +34,13 @@ public class BlockListener implements Listener {
 		Block blockFrom = event.getBlock();
 		Block blockTo = event.getToBlock();
 
-		if (!((blockFrom.getType() == Material.WATER) && (blockTo.getType() == Material.AIR))) {
+		if (!((blockFrom.getType() == Material.WATER || blockFrom.getType() == Material.STATIONARY_WATER) && (blockTo.getType() == Material.AIR))) {
 			return;
 		}
 
-		int blockX = blockFrom.getX();
-		int blockY = blockFrom.getY();
-		int blockZ = blockFrom.getZ();
+		int blockX = blockTo.getX();
+		int blockY = blockTo.getY();
+		int blockZ = blockTo.getZ();
 		int radius = 2;
 		World world = blockFrom.getWorld();
 
