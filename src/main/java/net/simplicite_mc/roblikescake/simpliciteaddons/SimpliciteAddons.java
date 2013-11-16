@@ -51,6 +51,6 @@ public class SimpliciteAddons extends JavaPlugin {
 		getCommand("spawn").setExecutor(new CommandSpawn());
 		getCommand("setspawn").setExecutor(new CommandSetSpawn());
 		getCommand("motd").setExecutor(new CommandPlayerMOTD());
-		getCommand("getsponge").setExecutor(new CommandSponge());
+		getCommand("getsponge").setExecutor(new CommandGetSponge());
 	}
 }
