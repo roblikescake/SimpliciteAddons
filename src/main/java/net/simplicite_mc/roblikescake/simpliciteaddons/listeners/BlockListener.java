@@ -7,6 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockListener implements Listener {
@@ -26,5 +27,31 @@ public class BlockListener implements Listener {
 		World world = blockPlaced.getWorld();
 
 		Misc.clearSpongeWater(world, spongeX, spongeY, spongeZ, spongeClearRadius);
+	}
+
+	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+	public void onWaterUpdate(BlockFromToEvent event) {
+		Block blockFrom = event.getBlock();
+
+		if (!(blockFrom.getType() == Material.WATER)) {
+			return;
+		}
+
+		int blockX = blockFrom.getX();
+		int blockY = blockFrom.getY();
+		int blockZ = blockFrom.getZ();
+		int radius = 2;
+		World world = blockFrom.getWorld();
+
+		for (int radiusX = -radius; radiusX <= radius; radiusX++) {
+			for (int radiusY = -radius; radiusY <= radius; radiusY++) {
+				for (int radiusZ = -radius; radiusZ <= radius; radiusZ++) {
+					Block block = world.getBlockAt(blockX + radiusX, blockY + radiusY, blockZ + radiusZ);
+					if (block.getType() == Material.SPONGE) {
+						event.setCancelled(true);
+					}
+				}
+			}
+		}
 	}
 }
