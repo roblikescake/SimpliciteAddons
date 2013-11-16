@@ -16,3 +16,6 @@ commands:
 
    motd:
       description: Displays the PlayerMOTD.
+
+   getsponge:
+      desription: Gives you a sponge.

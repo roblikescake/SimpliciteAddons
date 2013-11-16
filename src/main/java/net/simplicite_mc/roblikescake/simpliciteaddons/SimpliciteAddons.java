@@ -1,9 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandBed;
-import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandPlayerMOTD;
-import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSetSpawn;
-import net.simplicite_mc.roblikescake.simpliciteaddons.commands.CommandSpawn;
+import net.simplicite_mc.roblikescake.simpliciteaddons.commands.*;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.BlockListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
@@ -54,5 +51,6 @@ public class SimpliciteAddons extends JavaPlugin {
 		getCommand("spawn").setExecutor(new CommandSpawn());
 		getCommand("setspawn").setExecutor(new CommandSetSpawn());
 		getCommand("motd").setExecutor(new CommandPlayerMOTD());
+		getCommand("getsponge").setExecutor(new CommandSponge());
 	}
 }

@@ -58,6 +58,10 @@ public class MessageManager {
 		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Spawn" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/setspawn";
 	}
 
+	public static String getCommandGetSpongeUsageMessage() {
+		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Sponge" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/getsponge";
+	}
+
 	public static String getPlayerMOTDMessage() {
 		String line1 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n";
 		String line2 = ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC\n";
