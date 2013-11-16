@@ -34,7 +34,7 @@ public class BlockListener implements Listener {
 		Block blockFrom = event.getBlock();
 		Block blockTo = event.getToBlock();
 
-		if (!((blockFrom.getType() == Material.AIR) && (blockTo.getType() == Material.WATER))) {
+		if (!((blockFrom.getType() == Material.WATER) && (blockTo.getType() == Material.AIR))) {
 			return;
 		}
 
