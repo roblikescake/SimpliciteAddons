@@ -9,7 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.SpawnEgg;
 
 public class ItemManager {
 
@@ -48,13 +47,11 @@ public class ItemManager {
 	 * Creates Animal SpawnEgg.
 	 * <p/>
 	 *
-	 * @param entityType The type of entity
+	 * @param entityShort The entity's ID number
 	 * @return the SpawnEgg
 	 */
-	public static ItemStack getAnimalSpawnEgg(EntityType entityType) {
-		ItemStack itemStack = new ItemStack(Material.MONSTER_EGG);
-		itemStack.setData(new SpawnEgg(entityType));
-		return itemStack;
+	public static ItemStack getAnimalSpawnEgg(short entityShort) {
+		return (new ItemStack(Material.MONSTER_EGG, 1, entityShort));
 	}
 
 	/**
