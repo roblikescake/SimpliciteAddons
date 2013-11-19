@@ -72,7 +72,7 @@
         </repository>
         <repository>
             <id>repo-daboross</id>
-            <url>repo.daboross.net/</url>
+            <url>http://repo.daboross.net/</url>
         </repository>
     </repositories>
     <dependencies>
