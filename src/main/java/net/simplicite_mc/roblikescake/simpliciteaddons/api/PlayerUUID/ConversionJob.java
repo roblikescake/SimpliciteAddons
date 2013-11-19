@@ -14,7 +14,7 @@ import com.mojang.api.profiles.HttpProfileRepository;
 import com.mojang.api.profiles.Profile;
 import com.mojang.api.profiles.ProfileCriteria;
 
-class ConversionJob implements Runnable {
+public class ConversionJob implements Runnable {
 
 	private static final HttpProfileRepository repository = new HttpProfileRepository();
 	private static final String AGENT = "minecraft";
