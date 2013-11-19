@@ -62,15 +62,17 @@ public class MessageManager {
 		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Sponge" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/getsponge";
 	}
 
-	public static String getPlayerMOTDMessage() {
+	public static String getPlayerMOTDMessage(String playerName) {
+		String playerUUID = SimpliciteAddons.Identifier.getPlayerUUID(playerName);
 		String line1 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n";
 		String line2 = ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC\n";
 		String line3 = ChatColor.AQUA + "                    Barebones " + ChatColor.GOLD + getPluginVersionNumber() + "\n\n";
-		String line4 = ChatColor.DARK_GREEN + "                     Latest Changes:\n";
-		String line5 = ChatColor.YELLOW + "- Sponges now remove water! /getsponge\n";
-		String line6 = ChatColor.YELLOW + "- Can now login via simplicite-mc.net\n";
-		String line7 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
-		return line1 + line2 + line3 + line4 + line5 + line6 + line7;
+		String line4 = ChatColor.DARK_GRAY + "                    Your PlayerUUID:\n" + ChatColor.GRAY + playerUUID + "\n";
+		String line5 = ChatColor.DARK_GREEN + "                     Latest Changes:\n";
+		String line6 = ChatColor.YELLOW + "- Sponges now remove water! /getsponge\n";
+		String line7 = ChatColor.YELLOW + "- Can now login via simplicite-mc.net\n";
+		String line8 = ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-";
+		return line1 + line2 + line3 + line4 + line5 + line6 + line7 + line8;
 	}
 
 	public static String getServerMOTDMessage() {

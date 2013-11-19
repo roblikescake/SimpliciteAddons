@@ -1,8 +1,6 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
-import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.Identifier;
-import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.IdentifierAPI;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
@@ -28,8 +26,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
-	Identifier playerIdentifier = SimpliciteAddons.Identifier;
-
 	/**
 	 * Check PlayerJoinEvents.
 	 * <p/>
@@ -40,9 +36,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String playerName = player.getName();
-		String playerUUID = playerIdentifier.getPlayerUUID(player.getName());
 
-		player.sendMessage("Your Mojang PlayerUUID is: " + playerUUID);
 		event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
 		sendPlayerMOTD(player);
 		System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
@@ -145,7 +139,7 @@ public class PlayerListener implements Listener {
 		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
 			@Override
 			public void run() {
-				player.sendMessage(MessageManager.getPlayerMOTDMessage());
+				player.sendMessage(MessageManager.getPlayerMOTDMessage(player.getName()));
 			}
 		}, 5L);
 	}
