@@ -15,8 +15,9 @@ public class CommandPlayerMOTD implements CommandExecutor {
 		}
 
 		Player player = (Player) sender;
+		final String playerName = player.getName();
 
-		player.sendMessage(MessageManager.getPlayerMOTDMessage());
+		player.sendMessage(MessageManager.getPlayerMOTDMessage(playerName));
 		return true;
 	}
 }

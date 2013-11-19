@@ -136,10 +136,11 @@ public class PlayerListener implements Listener {
 
 
 	public void sendPlayerMOTD(final Player player) {
+		final String playerName = player.getName();
 		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
 			@Override
 			public void run() {
-				player.sendMessage(MessageManager.getPlayerMOTDMessage(player.getName()));
+				player.sendMessage(MessageManager.getPlayerMOTDMessage(playerName));
 			}
 		}, 5L);
 	}
