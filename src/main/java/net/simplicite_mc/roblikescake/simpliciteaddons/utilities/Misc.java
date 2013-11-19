@@ -34,8 +34,8 @@ public class Misc {
 
 	public static boolean isBlockWater(World world, int spongeX, int spongeY, int spongeZ) {
 		Block block = world.getBlockAt(spongeX, spongeY, spongeZ);
-		int id = block.getTypeId();
-		return id == 8 || id == 9;
+		Material material = block.getType();
+		return material == Material.WATER || material == Material.STATIONARY_WATER;
 	}
 
 	public static void clearSpongeWater(World world, int spongeX, int spongeY, int spongeZ, int spongeClearRadius) {
