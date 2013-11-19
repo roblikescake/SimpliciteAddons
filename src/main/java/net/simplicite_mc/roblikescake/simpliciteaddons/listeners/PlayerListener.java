@@ -97,11 +97,10 @@ public class PlayerListener implements Listener {
 			return;
 		}
 
-		short entityShort = entity.getType().getTypeId();
 		String entityName = entityType.name();
 		Location location = entity.getLocation();
 
-		location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
+		location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityType));
 		player.launchProjectile(Egg.class);
 		entity.remove();
 		location.getWorld().playEffect(location, Effect.SMOKE, 4);
