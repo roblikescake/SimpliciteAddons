@@ -102,7 +102,6 @@ public class PlayerListener implements Listener {
 		Location location = entity.getLocation();
 
 		location.getWorld().dropItemNaturally(location, ItemManager.getAnimalSpawnEgg(entityShort));
-		player.launchProjectile(Egg.class);
 		entity.remove();
 		location.getWorld().playEffect(location, Effect.SMOKE, 4);
 		player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
