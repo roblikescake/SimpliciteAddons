@@ -70,6 +70,10 @@
             <id>bukkit-repo</id>
             <url>http://repo.bukkit.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>repo-daboross</id>
+            <url>repo.daboross.net/</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
