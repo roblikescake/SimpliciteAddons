@@ -1,3 +1,11 @@
+/*
+*  Credits to: forairan
+*  https://github.com/forairan/ConvertUUID
+*
+*  Credits to: EDawg878
+*  https://github.com/EDawg878/IdentifierAPI
+*/
+
 package net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID;
 
 public interface Identifier {
