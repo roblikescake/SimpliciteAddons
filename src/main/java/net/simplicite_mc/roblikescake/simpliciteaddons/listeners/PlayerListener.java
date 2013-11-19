@@ -1,6 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
+import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.Identifier;
 import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.IdentifierAPI;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
@@ -27,7 +28,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
-	public static IdentifierAPI Identifier;
+	Identifier playerIdentifier = SimpliciteAddons.Identifier;
 
 	/**
 	 * Check PlayerJoinEvents.
@@ -39,7 +40,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String playerName = player.getName();
-		String playerUUID = Identifier.getPlayerUUID(player.getName());
+		String playerUUID = playerIdentifier.getPlayerUUID(player.getName());
 
 		player.sendMessage("Your Mojang PlayerUUID is: " + playerUUID);
 		event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
