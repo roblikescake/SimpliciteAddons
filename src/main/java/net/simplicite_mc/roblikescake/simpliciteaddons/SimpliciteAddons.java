@@ -14,7 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SimpliciteAddons extends JavaPlugin {
 	public static SimpliciteAddons p;
-	public static IdentifierAPI Identifier = new IdentifierAPI();
+	public static IdentifierAPI identifier = new IdentifierAPI();
 
 	@Override
 	public void onEnable() {

@@ -63,7 +63,7 @@ public class MessageManager {
 	}
 
 	public static String[] getPlayerMOTDMessage(String playerName) {
-		String playerUUID = SimpliciteAddons.Identifier.getPlayerUUID(playerName);
+		String playerUUID = SimpliciteAddons.identifier.getPlayerUUID(playerName);
 		return new String[] {
 			ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
 			ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC",
