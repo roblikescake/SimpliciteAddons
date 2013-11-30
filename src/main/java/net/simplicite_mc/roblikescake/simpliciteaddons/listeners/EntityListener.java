@@ -1,7 +1,10 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 
+// Import Bukkit Classes
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,12 +21,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class EntityListener implements Listener {
 
-	/**
-	 * Check EntityDamageEvents.
-	 * <p/>
-	 * These events are checked for the purpose of applying
-	 * a "blood effect" on a mob or player when attacked.
-	 */
+	// Check EntityDamageByEntityEvent for the purpose of displaying a "blood" effect.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
 		if (!(event.getEntity() instanceof LivingEntity)) {
@@ -48,12 +46,7 @@ public class EntityListener implements Listener {
 		eyeLocation.getWorld().playEffect(eyeLocation, Effect.STEP_SOUND, Material.NETHER_WARTS);
 	}
 
-	/**
-	 * Check EntityDeathEvents.
-	 * <p/>
-	 * These events are checked for the purpose of dropping
-	 * mob or player heads after they are killed.
-	 */
+	// Check EntityDeathEvent for the purpose of dropping a mob/player head.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onEntityDeath(EntityDeathEvent event) {
 		if (event.getEntity().getKiller() == null) {
@@ -66,12 +59,7 @@ public class EntityListener implements Listener {
 		HeadManager.dropHeads(entity, killer);
 	}
 
-	/**
-	 * Check EntityExplodeEvents.
-	 * <p/>
-	 * These events are checked for the purpose of preventing
-	 * creeper explosions.
-	 */
+	// Check EntityExplodeEvent for the purpose of preventing Creeper/Wither/EnderDragon block damage.
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onEntityExplode(EntityExplodeEvent event) {
 		EntityType entityType = event.getEntityType();

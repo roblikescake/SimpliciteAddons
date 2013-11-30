@@ -1,11 +1,14 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
+// Import Bukkit Classes
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Ageable;
@@ -26,12 +29,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class PlayerListener implements Listener {
 
-	/**
-	 * Check PlayerJoinEvents.
-	 * <p/>
-	 * These events are checked for the purpose of setting
-	 * the join messages for players.
-	 */
+	// Check PlayerJoinEvent for the purpose of setting a custom PlayerJoinMessage and sending the PlayerMOTD.
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
@@ -42,12 +40,7 @@ public class PlayerListener implements Listener {
 		System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
 	}
 
-	/**
-	 * Check PlayerQuitEvents.
-	 * <p/>
-	 * These events are checked for the purpose of setting
-	 * the quit messages for players.
-	 */
+	// Check PlayerQuitEvent for the purpose of setting a custom PlayerQuitMessage.
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		String playerName = event.getPlayer().getName();
@@ -56,12 +49,7 @@ public class PlayerListener implements Listener {
 		System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
 	}
 
-	/**
-	 * Check PlayerKickEvents.
-	 * <p/>
-	 * These events are checked for the purpose of setting
-	 * the kick messages for players.
-	 */
+	// Check PlayerKickEvent for the purpose of setting a custom PlayerKickMessage.
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerKick(PlayerKickEvent event) {
 		String playerName = event.getPlayer().getName();
@@ -70,12 +58,7 @@ public class PlayerListener implements Listener {
 		System.out.println(MessageManager.getPlayerQuitConsoleMessage(playerName));
 	}
 
-	/**
-	 * Check PlayerInteractEntityEvents.
-	 * <p/>
-	 * These events are checked for the purpose of dropping
-	 * a spawn egg when a player uses the AnimalCatcher item.
-	 */
+	// Check PlayerInteractEntityEvent for the purpose of using the AnimalCatcher item.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
 		Player player = event.getPlayer();
@@ -102,12 +85,7 @@ public class PlayerListener implements Listener {
 		player.sendMessage(MessageManager.getAnimalCaughtMessage(entityName));
 	}
 
-	/**
-	 * Check CreatureSpawnEvents.
-	 * <p/>
-	 * These events are checked for the purpose of changing
-	 * the entity spawned via SpawnEgg to a baby, if applicable.
-	 */
+	// Check CreatureSpawnEvent for the purpose of forcing Ageable Entities to spawn as babies if spawned via SpawnEgg.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onCreatureSpawn(CreatureSpawnEvent event) {
 		if (!(event.getSpawnReason() == CreatureSpawnEvent.SpawnReason.SPAWNER_EGG)) {
@@ -121,12 +99,7 @@ public class PlayerListener implements Listener {
 		((Ageable) event.getEntity()).setBaby();
 	}
 
-	/**
-	 * Checks PlayerPickupItemEvents.
-	 * <p/>
-	 * These events are checked for the purpose of re-applying
-	 * the HeadData of a head, as it is lost on placing the Head.
-	 */
+	// Check PlayerPickupItemEvent for the purpose of re-applying head data to mob heads.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onPlayerPickupItem(PlayerPickupItemEvent event) {
 		Item item = event.getItem();
@@ -134,7 +107,7 @@ public class PlayerListener implements Listener {
 		HeadManager.applyHeadData(item);
 	}
 
-
+	// Scheduler used for sending a player the PlayerMOTD.
 	public void sendPlayerMOTD(final Player player) {
 		final String playerName = player.getName();
 		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {

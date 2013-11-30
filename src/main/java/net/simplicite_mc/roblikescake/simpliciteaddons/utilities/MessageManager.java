@@ -1,7 +1,10 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
+// Import Bukkit Classes
 import org.bukkit.ChatColor;
 
 public class MessageManager {
@@ -38,7 +41,7 @@ public class MessageManager {
 		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Heads" + ChatColor.BLACK + "] " + ChatColor.GREEN + "A " + ChatColor.BLUE + mobHeadDisplayName + ChatColor.GREEN + " dropped!";
 	}
 
-	public static String getConsoleOnlyMessage() {
+	public static String getNoConsoleMessage() {
 		return "Console cannot execute this command!";
 	}
 
@@ -48,6 +51,10 @@ public class MessageManager {
 
 	public static String getCommandBedUsageMessage() {
 		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Bed" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/bed";
+	}
+
+	public static String getCommandPlayerMOTDUsageMessage() {
+		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "MOTD" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/motd";
 	}
 
 	public static String getCommandSpawnUsageMessage() {
@@ -64,15 +71,15 @@ public class MessageManager {
 
 	public static String[] getPlayerMOTDMessage(String playerName) {
 		String playerUUID = SimpliciteAddons.identifier.getPlayerUUID(playerName);
-		return new String[] {
-			ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
-			ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC",
-			ChatColor.AQUA + "                    Barebones " + ChatColor.GOLD + getPluginVersionNumber() + "\n",
-			ChatColor.DARK_GRAY + "                    Your PlayerUUID:\n" + ChatColor.GRAY + playerUUID,
-			ChatColor.DARK_GREEN + "                     Latest Changes:",
-			ChatColor.YELLOW + "- Sponges now remove water! /getsponge",
-			ChatColor.YELLOW + "- Can now login via simplicite-mc.net",
-			ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
+		return new String[]{
+				ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
+				ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC",
+				ChatColor.AQUA + "                    Barebones " + ChatColor.GOLD + getPluginVersionNumber() + "\n",
+				ChatColor.DARK_GRAY + "                    Your PlayerUUID:\n" + ChatColor.GRAY + playerUUID,
+				ChatColor.DARK_GREEN + "                     Latest Changes:",
+				ChatColor.YELLOW + "- Sponges now remove water! /getsponge",
+				ChatColor.YELLOW + "- Can now login via simplicite-mc.net",
+				ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
 		};
 	}
 

@@ -1,8 +1,11 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
 
+// Import Bukkit Classes
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -13,12 +16,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+// Import Java Classes
 import java.util.HashMap;
 import java.util.Random;
 
 public class HeadManager {
 	public static HashMap<EntityType, HeadData> headData;
 
+	// Set Head Data for MobHead's.
 	public HeadManager() {
 		headData = new HashMap<EntityType, HeadData>();
 		headData.put(EntityType.CHICKEN, new HeadData(2, "MHF_Chicken", "Chicken Head"));
@@ -51,13 +56,7 @@ public class HeadManager {
 		headData.put(EntityType.WITHER, new HeadData(10, "WitherGamer", "Wither Head"));
 	}
 
-	/**
-	 * Used for dropping the head of an entity.
-	 * <p/>
-	 *
-	 * @param entity The entity to drop it's head
-	 * @param killer The entity's killer
-	 */
+	// Drop a MobHead or PlayerHead.
 	public static void dropHeads(Entity entity, Player killer) {
 		EntityType entityType = entity.getType();
 		HeadData head = headData.get(entityType);
@@ -88,12 +87,7 @@ public class HeadManager {
 		}
 	}
 
-	/**
-	 * Applies HeadData to a Skull Item upon pickup.
-	 * <p/>
-	 *
-	 * @param item The item to apply HeadData to
-	 */
+	// Apply Head Data to a MobHead.
 	public static void applyHeadData(Item item) {
 		if (!item.getItemStack().getType().equals(Material.SKULL_ITEM)) {
 			return;
@@ -110,24 +104,12 @@ public class HeadManager {
 		}
 	}
 
-	/**
-	 * Gets Owner for MobHead.
-	 * <p/>
-	 *
-	 * @param entityType The entity
-	 * @return the Owner
-	 */
+	// Get the Owner for a MobHead.
 	public static String getOwner(EntityType entityType) {
 		return headData.get(entityType).getOwner();
 	}
 
-	/**
-	 * Gets DisplayName for MobHead.
-	 * <p/>
-	 *
-	 * @param entityType The entity
-	 * @return the DisplayName
-	 */
+	// Get the DisplayName for a MobHead.
 	public static String getDisplayName(EntityType entityType) {
 		return headData.get(entityType).getDisplayName();
 	}

@@ -1,7 +1,10 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
+// Import Bukkit Classes
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -16,12 +19,7 @@ public class ItemManager {
 		SimpliciteAddons.p.getServer().addRecipe(getAnimalCatcherRecipe());
 	}
 
-	/**
-	 * Creates the AnimalCatcher recipe.
-	 * <p/>
-	 *
-	 * @return the recipe
-	 */
+	// Create the AnimalCatcher recipe.
 	public static ShapedRecipe getAnimalCatcherRecipe() {
 		ShapedRecipe AnimalCatcher = new ShapedRecipe(getAnimalCatcher());
 		AnimalCatcher.shape(" X ", "XXX", " X ");
@@ -29,12 +27,7 @@ public class ItemManager {
 		return AnimalCatcher;
 	}
 
-	/**
-	 * Creates the AnimalCatcher item.
-	 * <p/>
-	 *
-	 * @return the item
-	 */
+	// Create the AnimalCatcher item.
 	public static ItemStack getAnimalCatcher() {
 		ItemStack itemStack = new ItemStack(Material.EGG);
 		ItemMeta itemMeta = itemStack.getItemMeta();
@@ -43,24 +36,12 @@ public class ItemManager {
 		return itemStack;
 	}
 
-	/**
-	 * Creates Animal SpawnEgg.
-	 * <p/>
-	 *
-	 * @param entityShort The entity's ID number
-	 * @return the SpawnEgg
-	 */
+	// Create an Animal SpawnEgg.
 	public static ItemStack getAnimalSpawnEgg(short entityShort) {
 		return (new ItemStack(Material.MONSTER_EGG, 1, entityShort));
 	}
 
-	/**
-	 * Creates MobHead.
-	 * <p/>
-	 *
-	 * @param entityType The entity
-	 * @return the MobHead
-	 */
+	// Create a MobHead.
 	public static ItemStack getMobHead(EntityType entityType) {
 		ItemStack mobHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 		SkullMeta skullMeta = (SkullMeta) mobHead.getItemMeta();
@@ -70,13 +51,7 @@ public class ItemManager {
 		return mobHead;
 	}
 
-	/**
-	 * Create PlayerHead.
-	 * <p/>
-	 *
-	 * @param playerName The player's name
-	 * @return the PlayerHead
-	 */
+	// Create a PlayerHead.
 	public static ItemStack getPlayerHead(String playerName) {
 		ItemStack playerHead = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
 		SkullMeta skullMeta = (SkullMeta) playerHead.getItemMeta();

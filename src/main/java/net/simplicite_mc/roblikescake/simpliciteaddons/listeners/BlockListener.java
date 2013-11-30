@@ -1,6 +1,10 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
+// Import SimpliciteAddons Classes
+
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
+
+// Import Bukkit Classes
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -12,11 +16,12 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockListener implements Listener {
 
+	// Check BlockPlaceEvent for the purpose of allowing sponges to clear water.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onBlockPlace(BlockPlaceEvent event) {
 		Block blockPlaced = event.getBlockPlaced();
 
-		if (!(blockPlaced.getType() == Material.SPONGE)) {
+		if (blockPlaced.getType() != Material.SPONGE) {
 			return;
 		}
 
@@ -29,6 +34,7 @@ public class BlockListener implements Listener {
 		Misc.clearSpongeWater(world, spongeX, spongeY, spongeZ, spongeClearRadius);
 	}
 
+	// Check BlockFromToEvent for the purpose of preventing water updates near a sponge when used for clearing water.
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onWaterUpdate(BlockFromToEvent event) {
 		Block blockFrom = event.getBlock();
