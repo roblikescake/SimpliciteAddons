@@ -1,10 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-// Import SimpliciteAddons Classes
-
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 
-// Import Bukkit Classes
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;

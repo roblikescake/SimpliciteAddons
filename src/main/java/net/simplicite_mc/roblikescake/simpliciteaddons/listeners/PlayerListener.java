@@ -1,14 +1,11 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-// Import SimpliciteAddons Classes
-
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.HeadManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.MessageManager;
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
-// Import Bukkit Classes
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Ageable;

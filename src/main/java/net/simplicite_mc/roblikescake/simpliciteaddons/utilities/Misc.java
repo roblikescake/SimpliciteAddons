@@ -1,7 +1,5 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
-// Import Bukkit Classes
-
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;

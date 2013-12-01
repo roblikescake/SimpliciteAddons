@@ -1,10 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.listeners;
 
-// Import SimpliciteAddons Classes
-
 import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
-// Import Bukkit Classes
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;

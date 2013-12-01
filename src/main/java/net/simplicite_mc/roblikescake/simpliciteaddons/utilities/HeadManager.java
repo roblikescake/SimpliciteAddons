@@ -1,11 +1,8 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
-// Import SimpliciteAddons Classes
-
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 import net.simplicite_mc.roblikescake.simpliciteaddons.datatypes.HeadData;
 
-// Import Bukkit Classes
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -16,7 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-// Import Java Classes
 import java.util.HashMap;
 import java.util.Random;
 

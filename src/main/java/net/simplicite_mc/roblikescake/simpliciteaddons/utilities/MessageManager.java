@@ -1,10 +1,7 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 
-// Import SimpliciteAddons Classes
-
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
-// Import Bukkit Classes
 import org.bukkit.ChatColor;
 
 public class MessageManager {
