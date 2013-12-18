@@ -32,9 +32,9 @@ public class MariaDB {
 			Class.forName("org.mariadb.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mariadb://" + host + port, user, password);
 		} catch (ClassNotFoundException e) {
-			plugin.getLogger().severe("Could not connect to MariaDb! Cause: " + e.getMessage());
+			plugin.getLogger().severe("Could not connect to MariaDoge! Cause: " + e.getMessage());
 		} catch (SQLException e) {
-			plugin.getLogger().severe("JDBC Driver not found!");
+			plugin.getLogger().severe("JDBC Doger not found!");
 		}
 		return connection;
 	}
@@ -52,7 +52,7 @@ public class MariaDB {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				plugin.getLogger().severe("Error closing the MariaDB Connection!");
+				plugin.getLogger().severe("Error closing the MariaDoge Connection!");
 				e.printStackTrace();
 			}
 		}
