@@ -2,6 +2,8 @@ package net.simplicite_mc.roblikescake.simpliciteaddons;
 
 import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.IdentifierAPI;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.*;
+import net.simplicite_mc.roblikescake.simpliciteaddons.config.Config;
+import net.simplicite_mc.roblikescake.simpliciteaddons.database.MariaDB;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.BlockListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.PlayerListener;
@@ -12,9 +14,14 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.ItemManager;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.sql.Connection;
+
 public class SimpliciteAddons extends JavaPlugin {
 	public static SimpliciteAddons p;
 	public static IdentifierAPI identifier = new IdentifierAPI();
+
+	MariaDB mariaDB = new MariaDB(Config.getDBUser, Config.getDBPassword, Config.getDBHost, Config.getDBPort, Config.getDBDatabase);
+	Connection con = null;
 
 	@Override
 	public void onEnable() {
@@ -23,6 +30,10 @@ public class SimpliciteAddons extends JavaPlugin {
 		registerListeners();
 		registerManagers();
 		registerCommands();
+
+		loadDBConfig();
+
+		openDBConnection();
 	}
 
 	@Override
@@ -54,5 +65,14 @@ public class SimpliciteAddons extends JavaPlugin {
 		getCommand("setspawn").setExecutor(new CommandSetSpawn());
 		getCommand("motd").setExecutor(new CommandPlayerMOTD());
 		getCommand("getsponge").setExecutor(new CommandGetSponge());
+	}
+
+	public void openDBConnection() {
+		con = mariaDB.openConnection();
+	}
+
+	public void loadDBConfig() {
+		Config config = new Config(this);
+		config.loadConfigOptions();
 	}
 }
