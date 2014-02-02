@@ -3,6 +3,9 @@ package net.simplicite_mc.roblikescake.simpliciteaddons.utilities;
 import net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
+import java.util.UUID;
 
 public class MessageManager {
 
@@ -66,8 +69,8 @@ public class MessageManager {
 		return ChatColor.BLACK + "[" + ChatColor.AQUA + "SMC" + ChatColor.GRAY + "-" + ChatColor.DARK_AQUA + "Sponge" + ChatColor.BLACK + "] " + ChatColor.RED + "Correct usage is: " + ChatColor.GREEN + "/getsponge";
 	}
 
-	public static String[] getPlayerMOTDMessage(String playerName) {
-		String playerUUID = SimpliciteAddons.identifier.getPlayerUUID(playerName);
+	public static String[] getPlayerMOTDMessage(Player player) {
+		UUID playerUUID = player.getUniqueId();
 		return new String[]{
 				ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + " -=-=-=-=-=-=-=-=-=-=-=-=-=-=-",
 				ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "" + ChatColor.BOLD + "                 Simplicite" + ChatColor.BLUE + "" + ChatColor.BOLD + "MC",

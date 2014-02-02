@@ -106,11 +106,10 @@ public class PlayerListener implements Listener {
 
 	// Scheduler used for sending a player the PlayerMOTD.
 	public void sendPlayerMOTD(final Player player) {
-		final String playerName = player.getName();
 		SimpliciteAddons.p.getServer().getScheduler().runTaskLater(SimpliciteAddons.p, new Runnable() {
 			@Override
 			public void run() {
-				player.sendMessage(MessageManager.getPlayerMOTDMessage(playerName));
+				player.sendMessage(MessageManager.getPlayerMOTDMessage(player));
 			}
 		}, 5L);
 	}
