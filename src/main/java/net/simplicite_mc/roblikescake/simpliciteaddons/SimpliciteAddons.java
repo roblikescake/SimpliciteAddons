@@ -1,6 +1,5 @@
 package net.simplicite_mc.roblikescake.simpliciteaddons;
 
-import net.simplicite_mc.roblikescake.simpliciteaddons.api.PlayerUUID.IdentifierAPI;
 import net.simplicite_mc.roblikescake.simpliciteaddons.commands.*;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.BlockListener;
 import net.simplicite_mc.roblikescake.simpliciteaddons.listeners.EntityListener;
@@ -14,7 +13,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SimpliciteAddons extends JavaPlugin {
 	public static SimpliciteAddons p;
-	public static IdentifierAPI identifier = new IdentifierAPI();
 
 	public SimpliciteAddons() {
 		p = this;
