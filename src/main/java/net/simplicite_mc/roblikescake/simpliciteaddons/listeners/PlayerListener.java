@@ -117,7 +117,7 @@ public class PlayerListener implements Listener {
 	}
 
 	public void sendConsoleTellRawMessage(Player player) {
-		String testMSG = "tellraw @" + player.getName() + "{\"text\":\"\",\"extra\":[{\"text\":\"SwordPVP\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"http://www.swordpvp.com\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"Click to go to website!\"}}]}";
+		String testMSG = "tellraw @" + player.getName() + " {\"text\":\"\",\"extra\":[{\"text\":\"SwordPVP\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"http://www.swordpvp.com\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"Click to go to website!\"}}]}";
 
 		SimpliciteAddons.p.getServer().dispatchCommand(SimpliciteAddons.p.getServer().getConsoleSender(), testMSG);
 	}
