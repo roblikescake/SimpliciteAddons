@@ -31,7 +31,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 		String playerName = player.getName();
-
+		player.sendRawMessage("{\"text\":\"\",\"extra\":[{\"text\":\"SwordPVP\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"http://www.swordpvp.com\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":\"Click to go to website!\"}}]}");
 		event.setJoinMessage(MessageManager.getPlayerJoinMessage(playerName));
 		sendPlayerMOTD(player);
 		System.out.println(MessageManager.getPlayerJoinConsoleMessage(playerName));
