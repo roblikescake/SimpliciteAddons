@@ -2,7 +2,7 @@ name: SimpliciteAddons
 author: roblikescake
 main: net.simplicite_mc.roblikescake.simpliciteaddons.SimpliciteAddons
 description: It does stuff.
-version: ${project.version}.${describe}
+version: ${project.version}.${description}
 
 commands:
    bed:
