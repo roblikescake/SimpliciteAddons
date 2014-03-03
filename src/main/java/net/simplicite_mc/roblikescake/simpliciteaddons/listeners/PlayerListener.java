@@ -8,7 +8,6 @@ import net.simplicite_mc.roblikescake.simpliciteaddons.utilities.Misc;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
