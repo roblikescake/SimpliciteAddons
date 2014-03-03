@@ -18,4 +18,4 @@ commands:
       description: Displays the PlayerMOTD.
 
    getsponge:
-      desription: Gives you a sponge.
+      description: Gives you a sponge.
